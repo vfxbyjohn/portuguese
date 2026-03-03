@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>As 3 Zonas — Portuguese Demonstratives</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --z1: #0E7490;
+    --z1-soft: #ECFEFF;
+    --z1-border: #A5F3FC;
+    --z2: #C2410C;
+    --z2-soft: #FFF7ED;
+    --z2-border: #FDBA74;
+    --z3: #7E22CE;
+    --z3-soft: #FAF5FF;
+    --z3-border: #D8B4FE;
+    --bg: #FAFAF9;
+    --card: #FFFFFF;
+    --ink: #1C1917;
+    --mid: #57534E;
+    --dim: #A8A29E;
+    --hairline: #F0EEEB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 52px 24px 48px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .tagline {
+    font-size: 14px;
+    color: var(--mid);
+    font-weight: 400;
+  }
+
+  /* ── Diagram ── */
+  .diagram-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+  .diagram {
+    position: relative;
+    width: 160px;
+    height: 160px;
+  }
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .r3 {
+    width: 158px; height: 158px;
+    border: 2px solid var(--z3-border);
+    background: var(--z3-soft);
+  }
+  .r2 {
+    width: 105px; height: 105px;
+    border: 2px solid var(--z2-border);
+    background: var(--z2-soft);
+  }
+  .r1 {
+    width: 52px; height: 52px;
+    border: 2px solid var(--z1-border);
+    background: var(--z1-soft);
+  }
+  .dot {
+    position: absolute;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--z1);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+  .d-label {
+    position: absolute;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .d-label.d1 { color: var(--z1); bottom: 56px; left: 50%; transform: translateX(-50%); }
+  .d-label.d2 { color: var(--z2); top: 50%; right: 6px; transform: translateY(-50%); }
+  .d-label.d3 { color: var(--z3); top: 6px; left: 50%; transform: translateX(-50%); }
+
+  /* ── Zone Cards ── */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    animation: rise 0.45s ease both;
+  }
+  .card:nth-child(2) { animation-delay: 0.06s; }
+  .card:nth-child(3) { animation-delay: 0.12s; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-accent {
+    height: 4px;
+  }
+  .z1 .card-accent { background: var(--z1); }
+  .z2 .card-accent { background: var(--z2); }
+  .z3 .card-accent { background: var(--z3); }
+
+  .card-body {
+    padding: 22px 24px 20px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .zone-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .z1 .zone-tag { color: var(--z1); }
+  .z2 .zone-tag { color: var(--z2); }
+  .z3 .zone-tag { color: var(--z3); }
+
+  .zone-name {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 2px;
+  }
+  .zone-eng {
+    font-size: 12px;
+    color: var(--dim);
+    font-weight: 400;
+  }
+
+  .badge-group { text-align: right; flex-shrink: 0; }
+  .loc-badge {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 8px;
+    padding: 5px 14px;
+    letter-spacing: 1.5px;
+  }
+  .z1 .loc-badge { background: var(--z1); }
+  .z2 .loc-badge { background: var(--z2); }
+  .z3 .loc-badge { background: var(--z3); }
+  .loc-sub {
+    font-size: 10px;
+    color: var(--dim);
+    margin-top: 3px;
+  }
+
+  /* ── Pronoun Section ── */
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+
+  .pronoun-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .p-cell { text-align: center; }
+  .p-cell .p-label {
+    font-size: 9px;
+    color: var(--dim);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .p-cell .p-val {
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 6px 2px;
+  }
+  .z1 .p-val { background: var(--z1-soft); color: var(--z1); }
+  .z2 .p-val { background: var(--z2-soft); color: var(--z2); }
+  .z3 .p-val { background: var(--z3-soft); color: var(--z3); }
+
+  /* ── Neutral Pronoun ── */
+  .neutral-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+  .z1 .neutral-row { background: var(--z1-soft); }
+  .z2 .neutral-row { background: var(--z2-soft); }
+  .z3 .neutral-row { background: var(--z3-soft); }
+
+  .neutral-word {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .z1 .neutral-word { color: var(--z1); }
+  .z2 .neutral-word { color: var(--z2); }
+  .z3 .neutral-word { color: var(--z3); }
+
+  .neutral-info {
+    flex: 1;
+  }
+  .neutral-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.4;
+  }
+  .neutral-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+  .z1 .neutral-tag { color: var(--z1); }
+  .z2 .neutral-tag { color: var(--z2); }
+  .z3 .neutral-tag { color: var(--z3); }
+
+  /* ── Trick ── */
+  .trick {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--mid);
+    background: #FEFCE8;
+    border-radius: 8px;
+    padding: 7px 12px;
+    margin-bottom: 16px;
+    border: 1px solid #FDE68A;
+  }
+  .trick strong { color: #92400E; font-weight: 600; }
+
+  /* ── Divider ── */
+  .card-divider {
+    height: 1px;
+    background: var(--hairline);
+    margin-bottom: 14px;
+  }
+
+  /* ── Examples ── */
+  .ex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--hairline);
+    gap: 10px;
+  }
+  .ex-row:last-child { border-bottom: none; }
+  .ex-pt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .ex-en {
+    font-size: 11px;
+    color: var(--dim);
+    font-style: italic;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .ex-sub-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-top: 12px;
+    margin-bottom: 6px;
+    padding-top: 10px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  /* ── Footer Tip ── */
+  .tip {
+    text-align: center;
+    margin-top: 32px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--card);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+  .tip strong { color: var(--ink); font-weight: 600; }
+
+  .rule-box {
+    text-align: center;
+    margin-bottom: 28px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #FEFCE8;
+    border: 1.5px solid #FDE68A;
+  }
+  .rule-title {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: #92400E;
+    margin-bottom: 8px;
+  }
+  .rule-text {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+  .rule-text strong { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="eyebrow">Português Brasileiro</div>
+    <h1>As 3 Zonas</h1>
+    <div class="tagline">Demonstratives & Location Words</div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram">
+      <div class="ring r3"></div>
+      <div class="ring r2"></div>
+      <div class="ring r1"></div>
+      <div class="dot"></div>
+      <span class="d-label d1">AQUI</span>
+      <span class="d-label d2">AÍ</span>
+      <span class="d-label d3">LÁ</span>
+    </div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">HOW IT WORKS</div>
+    <div class="rule-text">
+      <strong>Specific noun?</strong> → match gender & number (este, essa, aqueles…)<br>
+      <strong>General thing / idea?</strong> → use the neutral form (isto, isso, aquilo)
+    </div>
+  </div>
+
+  <!-- ════ ZONE 1 ════ -->
+  <div class="card z1">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="card-header">
+        <div>
+          <div class="zone-tag">Zona 1</div>
+          <div class="zone-name">Perto de Mim</div>
+          <div class="zone-eng">Near ME (the speaker)</div>
+        </div>
+        <div class="badge-group">
+          <div class="loc-badge">AQUI</div>
+          <div class="loc-sub">= here</div>
+        </div>
+      </div>
+
+      <div class="section-label">Gendered forms</div>
+      <div class="pronoun-row">
+        <div class="p-cell"><div class="p-label">masc. sg.</div><div class="p-val">este</div></div>
+        <div class="p-cell"><div class="p-label">fem. sg.</div><div class="p-val">esta</div></div>
+        <div class="p-cell"><div class="p-label">masc. pl.</div><div class="p-val">estes</div></div>
+        <div class="p-cell"><div class="p-label">fem. pl.</div><div class="p-val">estas</div></div>
+      </div>
+
+      <div class="section-label">Neutral form</div>
+      <div class="neutral-row">
+        <div class="neutral-word">Isto</div>
+        <div class="neutral-info">
+          <div class="neutral-desc">For things, ideas, or situations — no gender, never changes</div>
+          <div class="neutral-tag">INVARIABLE</div>
+        </div>
+      </div>
+
+      <div class="trick">💡 <strong>EST- / IST-</strong> → think <strong>E</strong>u (me)</div>
+
+      <div class="card-divider"></div>
+      <div class="section-label">Examples — gendered</div>
+      <div class="ex-row"><span class="ex-pt">Este livro aqui é meu.</span><span class="ex-en">This book is mine.</span></div>
+      <div class="ex-row"><span class="ex-pt">Esta casa aqui é nova.</span><span class="ex-en">This house is new.</span></div>
+      <div class="ex-row"><span class="ex-pt">Estes sapatos são caros.</span><span class="ex-en">These shoes are expensive.</span></div>
+      <div class="ex-row"><span class="ex-pt">Estas flores são lindas.</span><span class="ex-en">These flowers are beautiful.</span></div>
+      <div class="ex-sub-label">Examples — neutral</div>
+      <div class="ex-row"><span class="ex-pt">Isto é uma escada.</span><span class="ex-en">This is a ladder.</span></div>
+      <div class="ex-row"><span class="ex-pt">O que é isto?</span><span class="ex-en">What is this?</span></div>
+    </div>
+  </div>
+
+  <!-- ════ ZONE 2 ════ -->
+  <div class="card z2">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="card-header">
+        <div>
+          <div class="zone-tag">Zona 2</div>
+          <div class="zone-name">Perto de Você</div>
+          <div class="zone-eng">Near YOU (the listener)</div>
+        </div>
+        <div class="badge-group">
+          <div class="loc-badge">AÍ</div>
+          <div class="loc-sub">= there (by you)</div>
+        </div>
+      </div>
+
+      <div class="section-label">Gendered forms</div>
+      <div class="pronoun-row">
+        <div class="p-cell"><div class="p-label">masc. sg.</div><div class="p-val">esse</div></div>
+        <div class="p-cell"><div class="p-label">fem. sg.</div><div class="p-val">essa</div></div>
+        <div class="p-cell"><div class="p-label">masc. pl.</div><div class="p-val">esses</div></div>
+        <div class="p-cell"><div class="p-label">fem. pl.</div><div class="p-val">essas</div></div>
+      </div>
+
+      <div class="section-label">Neutral form</div>
+      <div class="neutral-row">
+        <div class="neutral-word">Isso</div>
+        <div class="neutral-info">
+          <div class="neutral-desc">For things, ideas, or what someone just said — never changes</div>
+          <div class="neutral-tag">INVARIABLE</div>
+        </div>
+      </div>
+
+      <div class="trick">💡 <strong>ESS- / ISS-</strong> → think vo<strong>SS</strong>ê (you)</div>
+
+      <div class="card-divider"></div>
+      <div class="section-label">Examples — gendered</div>
+      <div class="ex-row"><span class="ex-pt">Esse caderno aí é seu?</span><span class="ex-en">That notebook yours?</span></div>
+      <div class="ex-row"><span class="ex-pt">Essa caneta não funciona.</span><span class="ex-en">That pen doesn't work.</span></div>
+      <div class="ex-row"><span class="ex-pt">Esses documentos são importantes.</span><span class="ex-en">Those docs are important.</span></div>
+      <div class="ex-row"><span class="ex-pt">Essas chaves são da Maria.</span><span class="ex-en">Those keys are Maria's.</span></div>
+      <div class="ex-sub-label">Examples — neutral</div>
+      <div class="ex-row"><span class="ex-pt">Isso não faz sentido.</span><span class="ex-en">That doesn't make sense.</span></div>
+      <div class="ex-row"><span class="ex-pt">Isso mesmo!</span><span class="ex-en">Exactly! / That's right!</span></div>
+    </div>
+  </div>
+
+  <!-- ════ ZONE 3 ════ -->
+  <div class="card z3">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="card-header">
+        <div>
+          <div class="zone-tag">Zona 3</div>
+          <div class="zone-name">Longe de Nós</div>
+          <div class="zone-eng">Far from BOTH of us</div>
+        </div>
+        <div class="badge-group">
+          <div class="loc-badge">LÁ</div>
+          <div class="loc-sub">= over there</div>
+        </div>
+      </div>
+
+      <div class="section-label">Gendered forms</div>
+      <div class="pronoun-row">
+        <div class="p-cell"><div class="p-label">masc. sg.</div><div class="p-val">aquele</div></div>
+        <div class="p-cell"><div class="p-label">fem. sg.</div><div class="p-val">aquela</div></div>
+        <div class="p-cell"><div class="p-label">masc. pl.</div><div class="p-val">aqueles</div></div>
+        <div class="p-cell"><div class="p-label">fem. pl.</div><div class="p-val">aquelas</div></div>
+      </div>
+
+      <div class="section-label">Neutral form</div>
+      <div class="neutral-row">
+        <div class="neutral-word">Aquilo</div>
+        <div class="neutral-info">
+          <div class="neutral-desc">For distant things, past events, or far-off situations — never changes</div>
+          <div class="neutral-tag">INVARIABLE</div>
+        </div>
+      </div>
+
+      <div class="trick">💡 <strong>AQUEL- / AQUIL-</strong> → think far <strong>A</strong>way</div>
+
+      <div class="card-divider"></div>
+      <div class="section-label">Examples — gendered</div>
+      <div class="ex-row"><span class="ex-pt">Aquele carro lá é caro.</span><span class="ex-en">That car over there is expensive.</span></div>
+      <div class="ex-row"><span class="ex-pt">Aquela igreja é antiga.</span><span class="ex-en">That church is old.</span></div>
+      <div class="ex-row"><span class="ex-pt">Aqueles prédios são novos.</span><span class="ex-en">Those buildings are new.</span></div>
+      <div class="ex-row"><span class="ex-pt">Aquelas montanhas são bonitas.</span><span class="ex-en">Those mountains are beautiful.</span></div>
+      <div class="ex-sub-label">Examples — neutral</div>
+      <div class="ex-row"><span class="ex-pt">Aquilo foi incrível!</span><span class="ex-en">That was incredible!</span></div>
+      <div class="ex-row"><span class="ex-pt">Você viu aquilo?</span><span class="ex-en">Did you see that?</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    🇧🇷 In everyday Brazilian speech, <strong>esse / essa / isso</strong> covers almost everything nearby.<br>
+    <strong>Este / esta / isto</strong> is more formal or written. <strong>Aquele / aquela / aquilo</strong> is always for far away.
+  </div>
+
+</div>
+</body>
+</html>
