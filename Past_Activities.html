@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Que Você Fez? — Talking About Past Activities</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #2563EB;
+    --accent-soft: #EFF6FF;
+    --accent-border: #93C5FD;
+    --accent2: #059669;
+    --accent2-soft: #ECFDF5;
+    --accent2-border: #6EE7B7;
+    --accent3: #D97706;
+    --accent3-soft: #FFFBEB;
+    --accent3-border: #FCD34D;
+    --bg: #FAFAF9;
+    --card: #FFFFFF;
+    --ink: #1C1917;
+    --mid: #57534E;
+    --dim: #A8A29E;
+    --hairline: #F0EEEB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 52px 24px 48px;
+  }
+
+  /* ── Back Link ── */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dim);
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+  }
+  .back-link:hover { color: var(--ink); }
+  .back-link svg { flex-shrink: 0; }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .tagline {
+    font-size: 14px;
+    color: var(--mid);
+    font-weight: 400;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    animation: rise 0.45s ease both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-accent { height: 4px; }
+  .blue .card-accent { background: var(--accent); }
+  .green .card-accent { background: var(--accent2); }
+  .amber .card-accent { background: var(--accent3); }
+
+  .card-body { padding: 22px 24px 20px; }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .card-subtitle {
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 18px;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+
+  /* ── Key Phrases ── */
+  .phrase-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--hairline);
+    gap: 10px;
+  }
+  .phrase-row:last-child { border-bottom: none; }
+  .phrase-pt {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .phrase-en {
+    font-size: 11px;
+    color: var(--dim);
+    font-style: italic;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ── Verb Table ── */
+  .verb-grid {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 1px;
+    background: var(--hairline);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .verb-cell {
+    background: var(--card);
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .verb-cell.header-cell {
+    background: var(--accent-soft);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .verb-cell.verb-label {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .verb-cell.past-form {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ── Examples ── */
+  .ex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--hairline);
+    gap: 10px;
+  }
+  .ex-row:last-child { border-bottom: none; }
+  .ex-pt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .ex-en {
+    font-size: 11px;
+    color: var(--dim);
+    font-style: italic;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .ex-sub-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-top: 12px;
+    margin-bottom: 6px;
+    padding-top: 10px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  /* ── Time Chips ── */
+  .time-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .time-chip {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-border);
+    border-radius: 10px;
+    padding: 8px 14px;
+    gap: 2px;
+  }
+  .time-chip .chip-pt {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .time-chip .chip-en {
+    font-size: 9px;
+    color: var(--dim);
+  }
+
+  /* ── Conversation ── */
+  .convo {
+    margin-bottom: 16px;
+  }
+  .convo-line {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .convo-line:last-child { border-bottom: none; }
+  .convo-speaker {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .convo-speaker.a { color: var(--accent); }
+  .convo-speaker.b { color: var(--accent2); }
+  .convo-text {
+    flex: 1;
+  }
+  .convo-pt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .convo-en {
+    font-size: 11px;
+    color: var(--dim);
+    font-style: italic;
+  }
+
+  /* ── Rule Box ── */
+  .rule-box {
+    text-align: center;
+    margin-bottom: 28px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #FEFCE8;
+    border: 1.5px solid #FDE68A;
+  }
+  .rule-title {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: #92400E;
+    margin-bottom: 8px;
+  }
+  .rule-text {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+  .rule-text strong { color: var(--ink); }
+
+  /* ── Divider ── */
+  .card-divider {
+    height: 1px;
+    background: var(--hairline);
+    margin: 14px 0;
+  }
+
+  /* ── Tip ── */
+  .tip {
+    text-align: center;
+    margin-top: 32px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--card);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+  .tip strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Practice Tips ── */
+  .practice-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .practice-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  }
+  .practice-body { padding: 22px 24px 20px; }
+  .practice-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .practice-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .practice-item:last-child { border-bottom: none; }
+  .practice-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-soft);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .practice-info { flex: 1; }
+  .practice-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .practice-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back-link" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+      <path d="M10 3l-5 5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    All Lessons
+  </a>
+
+  <div class="header">
+    <div class="eyebrow">Português Brasileiro</div>
+    <h1>O Que Você Fez?</h1>
+    <div class="tagline">Talking About Your Week, Weekend & Holidays</div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">KEY PATTERN</div>
+    <div class="rule-text">
+      Use the <strong>pretérito perfeito</strong> (simple past) to talk about completed actions.<br>
+      <strong>-ar → -ei</strong> &nbsp; <strong>-er → -i</strong> &nbsp; <strong>-ir → -i</strong>
+    </div>
+  </div>
+
+  <!-- ════ TIME EXPRESSIONS ════ -->
+  <div class="card blue">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="card-title">Quando?</div>
+      <div class="card-subtitle">Time expressions for the recent past</div>
+
+      <div class="section-label">Common time words</div>
+      <div class="time-chips">
+        <div class="time-chip"><span class="chip-pt">ontem</span><span class="chip-en">yesterday</span></div>
+        <div class="time-chip"><span class="chip-pt">anteontem</span><span class="chip-en">day before yesterday</span></div>
+        <div class="time-chip"><span class="chip-pt">na semana passada</span><span class="chip-en">last week</span></div>
+        <div class="time-chip"><span class="chip-pt">no fim de semana</span><span class="chip-en">on the weekend</span></div>
+        <div class="time-chip"><span class="chip-pt">nas férias</span><span class="chip-en">on holiday</span></div>
+        <div class="time-chip"><span class="chip-pt">no feriado</span><span class="chip-en">on the public holiday</span></div>
+        <div class="time-chip"><span class="chip-pt">no mês passado</span><span class="chip-en">last month</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ KEY QUESTIONS ════ -->
+  <div class="card green">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="card-title">Perguntas</div>
+      <div class="card-subtitle">Questions to ask and answer</div>
+
+      <div class="section-label">Starter questions</div>
+      <div class="phrase-row"><span class="phrase-pt">O que você fez?</span><span class="phrase-en">What did you do?</span></div>
+      <div class="phrase-row"><span class="phrase-pt">Como foi o seu fim de semana?</span><span class="phrase-en">How was your weekend?</span></div>
+      <div class="phrase-row"><span class="phrase-pt">Como foram as férias?</span><span class="phrase-en">How was the holiday?</span></div>
+      <div class="phrase-row"><span class="phrase-pt">Onde você foi?</span><span class="phrase-en">Where did you go?</span></div>
+      <div class="phrase-row"><span class="phrase-pt">Você fez algo legal?</span><span class="phrase-en">Did you do anything cool?</span></div>
+      <div class="phrase-row"><span class="phrase-pt">Você viajou?</span><span class="phrase-en">Did you travel?</span></div>
+    </div>
+  </div>
+
+  <!-- ════ COMMON VERBS ════ -->
+  <div class="card blue">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="card-title">Verbos Úteis</div>
+      <div class="card-subtitle">Common verbs in the past tense (eu form)</div>
+
+      <div class="verb-grid">
+        <div class="verb-cell header-cell">Infinitive</div>
+        <div class="verb-cell header-cell">Eu (past)</div>
+        <div class="verb-cell header-cell">English</div>
+
+        <div class="verb-cell verb-label">fazer</div>
+        <div class="verb-cell past-form">fiz</div>
+        <div class="verb-cell">I did / made</div>
+
+        <div class="verb-cell verb-label">ir</div>
+        <div class="verb-cell past-form">fui</div>
+        <div class="verb-cell">I went</div>
+
+        <div class="verb-cell verb-label">ver</div>
+        <div class="verb-cell past-form">vi</div>
+        <div class="verb-cell">I saw</div>
+
+        <div class="verb-cell verb-label">comer</div>
+        <div class="verb-cell past-form">comi</div>
+        <div class="verb-cell">I ate</div>
+
+        <div class="verb-cell verb-label">visitar</div>
+        <div class="verb-cell past-form">visitei</div>
+        <div class="verb-cell">I visited</div>
+
+        <div class="verb-cell verb-label">sair</div>
+        <div class="verb-cell past-form">saí</div>
+        <div class="verb-cell">I went out</div>
+
+        <div class="verb-cell verb-label">ficar</div>
+        <div class="verb-cell past-form">fiquei</div>
+        <div class="verb-cell">I stayed</div>
+
+        <div class="verb-cell verb-label">assistir</div>
+        <div class="verb-cell past-form">assisti</div>
+        <div class="verb-cell">I watched</div>
+
+        <div class="verb-cell verb-label">passear</div>
+        <div class="verb-cell past-form">passeei</div>
+        <div class="verb-cell">I strolled / hung out</div>
+
+        <div class="verb-cell verb-label">descansar</div>
+        <div class="verb-cell past-form">descansei</div>
+        <div class="verb-cell">I rested</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ ANSWERING ════ -->
+  <div class="card amber">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="card-title">Respostas</div>
+      <div class="card-subtitle">Useful answers and phrases</div>
+
+      <div class="section-label">Weekend / Week</div>
+      <div class="ex-row"><span class="ex-pt">Eu fiquei em casa.</span><span class="ex-en">I stayed home.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu saí com amigos.</span><span class="ex-en">I went out with friends.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu fui ao cinema.</span><span class="ex-en">I went to the movies.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu comi numa churrascaria.</span><span class="ex-en">I ate at a BBQ place.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu assisti um filme.</span><span class="ex-en">I watched a movie.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu descansei bastante.</span><span class="ex-en">I rested a lot.</span></div>
+
+      <div class="ex-sub-label">Holiday / Travel</div>
+      <div class="ex-row"><span class="ex-pt">Eu viajei para o Rio.</span><span class="ex-en">I travelled to Rio.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu visitei minha família.</span><span class="ex-en">I visited my family.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu fui à praia.</span><span class="ex-en">I went to the beach.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu passeei pela cidade.</span><span class="ex-en">I walked around the city.</span></div>
+      <div class="ex-row"><span class="ex-pt">Foi muito legal!</span><span class="ex-en">It was really cool!</span></div>
+      <div class="ex-row"><span class="ex-pt">Foi incrível!</span><span class="ex-en">It was incredible!</span></div>
+
+      <div class="ex-sub-label">Reactions</div>
+      <div class="ex-row"><span class="ex-pt">Que legal!</span><span class="ex-en">How cool!</span></div>
+      <div class="ex-row"><span class="ex-pt">Que bom!</span><span class="ex-en">That's great!</span></div>
+      <div class="ex-row"><span class="ex-pt">Sério? Que massa!</span><span class="ex-en">Really? Awesome!</span></div>
+    </div>
+  </div>
+
+  <!-- ════ MINI CONVERSATIONS ════ -->
+  <div class="card green">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="card-title">Mini Conversas</div>
+      <div class="card-subtitle">Example dialogues to study</div>
+
+      <div class="section-label">At work on Monday</div>
+      <div class="convo">
+        <div class="convo-line">
+          <span class="convo-speaker a">A</span>
+          <div class="convo-text">
+            <div class="convo-pt">E aí, como foi o fim de semana?</div>
+            <div class="convo-en">Hey, how was the weekend?</div>
+          </div>
+        </div>
+        <div class="convo-line">
+          <span class="convo-speaker b">B</span>
+          <div class="convo-text">
+            <div class="convo-pt">Foi ótimo! Eu fui à praia com minha família.</div>
+            <div class="convo-en">It was great! I went to the beach with my family.</div>
+          </div>
+        </div>
+        <div class="convo-line">
+          <span class="convo-speaker a">A</span>
+          <div class="convo-text">
+            <div class="convo-pt">Que legal! E o tempo estava bom?</div>
+            <div class="convo-en">How cool! And the weather was good?</div>
+          </div>
+        </div>
+        <div class="convo-line">
+          <span class="convo-speaker b">B</span>
+          <div class="convo-text">
+            <div class="convo-pt">Estava ótimo, fez muito sol. E você, fez o quê?</div>
+            <div class="convo-en">It was great, really sunny. And you, what did you do?</div>
+          </div>
+        </div>
+        <div class="convo-line">
+          <span class="convo-speaker a">A</span>
+          <div class="convo-text">
+            <div class="convo-pt">Eu fiquei em casa, assisti umas séries e descansei.</div>
+            <div class="convo-en">I stayed home, watched some shows and rested.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-divider"></div>
+
+      <div class="section-label">After a holiday</div>
+      <div class="convo">
+        <div class="convo-line">
+          <span class="convo-speaker a">A</span>
+          <div class="convo-text">
+            <div class="convo-pt">Você viajou nas férias?</div>
+            <div class="convo-en">Did you travel on holiday?</div>
+          </div>
+        </div>
+        <div class="convo-line">
+          <span class="convo-speaker b">B</span>
+          <div class="convo-text">
+            <div class="convo-pt">Viajei! Fui para Salvador com uns amigos.</div>
+            <div class="convo-en">I did! I went to Salvador with some friends.</div>
+          </div>
+        </div>
+        <div class="convo-line">
+          <span class="convo-speaker a">A</span>
+          <div class="convo-text">
+            <div class="convo-pt">Que massa! O que vocês fizeram lá?</div>
+            <div class="convo-en">Awesome! What did you guys do there?</div>
+          </div>
+        </div>
+        <div class="convo-line">
+          <span class="convo-speaker b">B</span>
+          <div class="convo-text">
+            <div class="convo-pt">A gente visitou o Pelourinho, comeu acarajé e saiu à noite.</div>
+            <div class="convo-en">We visited Pelourinho, ate acarajé and went out at night.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip">
+    🇧🇷 Brazilians love asking <strong>"E aí?"</strong> or <strong>"E você?"</strong> to bounce the question back.<br>
+    Answering + asking back keeps the conversation flowing naturally.
+  </div>
+
+  <!-- ════ PRACTICE TIPS ════ -->
+  <div class="practice-card">
+    <div class="practice-accent"></div>
+    <div class="practice-body">
+      <div class="practice-title">Dicas de Prática</div>
+      <div class="section-label">Ways to practise with a speaker</div>
+
+      <div class="practice-item">
+        <div class="practice-num">1</div>
+        <div class="practice-info">
+          <div class="practice-name">Monday Catch-up</div>
+          <div class="practice-desc">Start every conversation with "Como foi o seu fim de semana?" and answer back with what you did. Make it a habit every Monday.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">2</div>
+        <div class="practice-info">
+          <div class="practice-name">Daily Recap</div>
+          <div class="practice-desc">At the end of the day, tell your practice partner 3 things you did today using "Eu fiz…", "Eu fui…", "Eu comi…" etc.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">3</div>
+        <div class="practice-info">
+          <div class="practice-name">Photo Story</div>
+          <div class="practice-desc">Show a photo from your weekend or holiday and describe what happened in Portuguese. Your partner asks follow-up questions.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">4</div>
+        <div class="practice-info">
+          <div class="practice-name">Question Ping-Pong</div>
+          <div class="practice-desc">Take turns asking and answering past-tense questions. Each answer must include a time expression (ontem, na semana passada, etc.).</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">5</div>
+        <div class="practice-info">
+          <div class="practice-name">Invent a Weekend</div>
+          <div class="practice-desc">Make up a wild weekend story and tell it to your partner. They guess which parts are real and which are invented — all in Portuguese.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

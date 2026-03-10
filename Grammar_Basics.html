@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Substantivos, Verbos e Pronomes — Grammar Basics</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noun: #0E7490;
+    --noun-soft: #ECFEFF;
+    --noun-border: #A5F3FC;
+    --verb: #C2410C;
+    --verb-soft: #FFF7ED;
+    --verb-border: #FDBA74;
+    --pron: #7E22CE;
+    --pron-soft: #FAF5FF;
+    --pron-border: #D8B4FE;
+    --bg: #FAFAF9;
+    --card: #FFFFFF;
+    --ink: #1C1917;
+    --mid: #57534E;
+    --dim: #A8A29E;
+    --hairline: #F0EEEB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 52px 24px 48px;
+  }
+
+  /* ── Back Link ── */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dim);
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+  }
+  .back-link:hover { color: var(--ink); }
+  .back-link svg { flex-shrink: 0; }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .tagline {
+    font-size: 14px;
+    color: var(--mid);
+    font-weight: 400;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    animation: rise 0.45s ease both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-accent { height: 4px; }
+  .noun .card-accent { background: var(--noun); }
+  .verb .card-accent { background: var(--verb); }
+  .pron .card-accent { background: var(--pron); }
+
+  .card-body { padding: 22px 24px 20px; }
+
+  .cat-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .noun .cat-tag { color: var(--noun); }
+  .verb .cat-tag { color: var(--verb); }
+  .pron .cat-tag { color: var(--pron); }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .card-eng {
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 14px;
+  }
+
+  .card-intro {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+
+  /* ── Vocab Chips ── */
+  .chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .chip {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 8px 14px;
+    gap: 2px;
+  }
+  .noun .chip { background: var(--noun-soft); }
+  .verb .chip { background: var(--verb-soft); }
+  .pron .chip { background: var(--pron-soft); }
+  .chip-pt {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .noun .chip-pt { color: var(--noun); }
+  .verb .chip-pt { color: var(--verb); }
+  .pron .chip-pt { color: var(--pron); }
+  .chip-en {
+    font-size: 9px;
+    color: var(--dim);
+  }
+
+  /* ── Examples ── */
+  .ex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--hairline);
+    gap: 10px;
+  }
+  .ex-row:last-child { border-bottom: none; }
+  .ex-pt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .ex-en {
+    font-size: 11px;
+    color: var(--dim);
+    font-style: italic;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .card-divider {
+    height: 1px;
+    background: var(--hairline);
+    margin: 14px 0;
+  }
+
+  /* ── Tip ── */
+  .tip {
+    text-align: center;
+    margin-top: 32px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--card);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+  .tip strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Practice Tips ── */
+  .practice-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .practice-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--noun), var(--verb), var(--pron));
+  }
+  .practice-body { padding: 22px 24px 20px; }
+  .practice-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .practice-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .practice-item:last-child { border-bottom: none; }
+  .practice-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--noun);
+    background: var(--noun-soft);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .practice-info { flex: 1; }
+  .practice-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .practice-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back-link" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+      <path d="M10 3l-5 5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    All Lessons
+  </a>
+
+  <div class="header">
+    <div class="eyebrow">Português Brasileiro</div>
+    <h1>Substantivos, Verbos e Pronomes</h1>
+    <div class="tagline">The building blocks you'll see in every lesson</div>
+  </div>
+
+  <!-- ════ SUBSTANTIVOS ════ -->
+  <div class="card noun">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Substantivo</div>
+      <div class="card-title">Substantivos</div>
+      <div class="card-eng">Nouns — naming words</div>
+
+      <div class="card-intro">In Portuguese every noun is either masculine (<strong>o</strong>) or feminine (<strong>a</strong>). This affects the articles, adjectives and demonstratives around it.</div>
+
+      <div class="section-label">Masculine — o</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">o carro</span><span class="chip-en">car</span></div>
+        <div class="chip"><span class="chip-pt">o livro</span><span class="chip-en">book</span></div>
+        <div class="chip"><span class="chip-pt">o dia</span><span class="chip-en">day</span></div>
+        <div class="chip"><span class="chip-pt">o trabalho</span><span class="chip-en">work</span></div>
+        <div class="chip"><span class="chip-pt">o amigo</span><span class="chip-en">friend (m)</span></div>
+      </div>
+
+      <div class="section-label">Feminine — a</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">a casa</span><span class="chip-en">house</span></div>
+        <div class="chip"><span class="chip-pt">a praia</span><span class="chip-en">beach</span></div>
+        <div class="chip"><span class="chip-pt">a cidade</span><span class="chip-en">city</span></div>
+        <div class="chip"><span class="chip-pt">a comida</span><span class="chip-en">food</span></div>
+        <div class="chip"><span class="chip-pt">a amiga</span><span class="chip-en">friend (f)</span></div>
+      </div>
+
+      <div class="card-divider"></div>
+
+      <div class="section-label">In a sentence</div>
+      <div class="ex-row"><span class="ex-pt">O carro é novo.</span><span class="ex-en">The car is new.</span></div>
+      <div class="ex-row"><span class="ex-pt">A cidade é grande.</span><span class="ex-en">The city is big.</span></div>
+      <div class="ex-row"><span class="ex-pt">Os livros estão na mesa.</span><span class="ex-en">The books are on the table.</span></div>
+      <div class="ex-row"><span class="ex-pt">As praias aqui são lindas.</span><span class="ex-en">The beaches here are beautiful.</span></div>
+    </div>
+  </div>
+
+  <!-- ════ VERBOS ════ -->
+  <div class="card verb">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Verbo</div>
+      <div class="card-title">Verbos</div>
+      <div class="card-eng">Verbs — action & state words</div>
+
+      <div class="card-intro">Portuguese verbs change their ending depending on who is doing the action. They fall into three groups: <strong>-ar</strong>, <strong>-er</strong>, <strong>-ir</strong>.</div>
+
+      <div class="section-label">-ar verbs</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">falar</span><span class="chip-en">to speak</span></div>
+        <div class="chip"><span class="chip-pt">morar</span><span class="chip-en">to live</span></div>
+        <div class="chip"><span class="chip-pt">trabalhar</span><span class="chip-en">to work</span></div>
+        <div class="chip"><span class="chip-pt">gostar</span><span class="chip-en">to like</span></div>
+      </div>
+
+      <div class="section-label">-er verbs</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">comer</span><span class="chip-en">to eat</span></div>
+        <div class="chip"><span class="chip-pt">beber</span><span class="chip-en">to drink</span></div>
+        <div class="chip"><span class="chip-pt">entender</span><span class="chip-en">to understand</span></div>
+      </div>
+
+      <div class="section-label">-ir verbs</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">abrir</span><span class="chip-en">to open</span></div>
+        <div class="chip"><span class="chip-pt">sair</span><span class="chip-en">to go out</span></div>
+        <div class="chip"><span class="chip-pt">decidir</span><span class="chip-en">to decide</span></div>
+      </div>
+
+      <div class="card-divider"></div>
+
+      <div class="section-label">In a sentence</div>
+      <div class="ex-row"><span class="ex-pt">Eu falo português.</span><span class="ex-en">I speak Portuguese.</span></div>
+      <div class="ex-row"><span class="ex-pt">Ela mora no Brasil.</span><span class="ex-en">She lives in Brazil.</span></div>
+      <div class="ex-row"><span class="ex-pt">A gente come bem aqui.</span><span class="ex-en">We eat well here.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eles saem todo sábado.</span><span class="ex-en">They go out every Saturday.</span></div>
+    </div>
+  </div>
+
+  <!-- ════ PRONOMES INDEFINIDOS ════ -->
+  <div class="card pron">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Pronome Indefinido</div>
+      <div class="card-title">Pronomes Indefinidos</div>
+      <div class="card-eng">Indefinite pronouns — "some", "any", "no one", etc.</div>
+
+      <div class="card-intro">These refer to non-specific people, things, or amounts. Some change for gender and number, others are fixed.</div>
+
+      <div class="section-label">People</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">alguém</span><span class="chip-en">someone</span></div>
+        <div class="chip"><span class="chip-pt">ninguém</span><span class="chip-en">no one</span></div>
+        <div class="chip"><span class="chip-pt">todo mundo</span><span class="chip-en">everyone</span></div>
+        <div class="chip"><span class="chip-pt">qualquer um</span><span class="chip-en">anyone</span></div>
+      </div>
+
+      <div class="section-label">Things & amounts</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">algo</span><span class="chip-en">something</span></div>
+        <div class="chip"><span class="chip-pt">nada</span><span class="chip-en">nothing</span></div>
+        <div class="chip"><span class="chip-pt">tudo</span><span class="chip-en">everything</span></div>
+        <div class="chip"><span class="chip-pt">cada</span><span class="chip-en">each</span></div>
+      </div>
+
+      <div class="section-label">Variable — match gender & number</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">algum / alguma</span><span class="chip-en">some (m/f)</span></div>
+        <div class="chip"><span class="chip-pt">alguns / algumas</span><span class="chip-en">some (pl)</span></div>
+        <div class="chip"><span class="chip-pt">nenhum / nenhuma</span><span class="chip-en">no / none (m/f)</span></div>
+        <div class="chip"><span class="chip-pt">outro / outra</span><span class="chip-en">another (m/f)</span></div>
+        <div class="chip"><span class="chip-pt">muito / muita</span><span class="chip-en">a lot (m/f)</span></div>
+        <div class="chip"><span class="chip-pt">pouco / pouca</span><span class="chip-en">a little (m/f)</span></div>
+      </div>
+
+      <div class="card-divider"></div>
+
+      <div class="section-label">In a sentence</div>
+      <div class="ex-row"><span class="ex-pt">Alguém ligou para você.</span><span class="ex-en">Someone called you.</span></div>
+      <div class="ex-row"><span class="ex-pt">Ninguém sabe a resposta.</span><span class="ex-en">No one knows the answer.</span></div>
+      <div class="ex-row"><span class="ex-pt">Tem algo errado.</span><span class="ex-en">Something is wrong.</span></div>
+      <div class="ex-row"><span class="ex-pt">Não sobrou nada.</span><span class="ex-en">Nothing was left.</span></div>
+      <div class="ex-row"><span class="ex-pt">Todo mundo veio.</span><span class="ex-en">Everyone came.</span></div>
+      <div class="ex-row"><span class="ex-pt">Algumas pessoas saíram cedo.</span><span class="ex-en">Some people left early.</span></div>
+      <div class="ex-row"><span class="ex-pt">Nenhum restaurante está aberto.</span><span class="ex-en">No restaurant is open.</span></div>
+      <div class="ex-row"><span class="ex-pt">Quero outro café.</span><span class="ex-en">I want another coffee.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    🇧🇷 You'll hear these terms in Portuguese grammar resources. Knowing what a <strong>substantivo</strong>, <strong>verbo</strong>, and <strong>pronome indefinido</strong> means will help you navigate any textbook or language app.
+  </div>
+
+  <!-- ════ PRACTICE TIPS ════ -->
+  <div class="practice-card">
+    <div class="practice-accent"></div>
+    <div class="practice-body">
+      <div class="practice-title">Dicas de Prática</div>
+      <div class="section-label">Ways to practise with a speaker</div>
+
+      <div class="practice-item">
+        <div class="practice-num">1</div>
+        <div class="practice-info">
+          <div class="practice-name">Category Sort</div>
+          <div class="practice-desc">Your partner says a word in Portuguese — you say whether it's a substantivo, verbo, or pronome. Keep score and swap roles.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">2</div>
+        <div class="practice-info">
+          <div class="practice-name">Build a Sentence</div>
+          <div class="practice-desc">Pick one noun, one verb, and one indefinite pronoun from this page and make a sentence. Your partner checks if it sounds natural.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">3</div>
+        <div class="practice-info">
+          <div class="practice-name">Gender Quick-Fire</div>
+          <div class="practice-desc">Your partner says a noun without the article. You guess "o" or "a" as fast as you can. Great for building gender instinct.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">4</div>
+        <div class="practice-info">
+          <div class="practice-name">Ninguém / Todo Mundo</div>
+          <div class="practice-desc">Make statements using indefinite pronouns and your partner responds: "Ninguém gosta de acordar cedo" → "Mentira! Eu gosto!" Keeps it fun and conversational.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
