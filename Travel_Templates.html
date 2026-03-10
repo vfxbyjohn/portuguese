@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modelos de Viagem — Travel Conversation Templates</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plan: #2563EB;
+    --plan-soft: #EFF6FF;
+    --plan-border: #93C5FD;
+    --there: #059669;
+    --there-soft: #ECFDF5;
+    --there-border: #6EE7B7;
+    --back: #D97706;
+    --back-soft: #FFFBEB;
+    --back-border: #FCD34D;
+    --help: #DC2626;
+    --help-soft: #FEF2F2;
+    --help-border: #FCA5A5;
+    --bg: #FAFAF9;
+    --card: #FFFFFF;
+    --ink: #1C1917;
+    --mid: #57534E;
+    --dim: #A8A29E;
+    --hairline: #F0EEEB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 52px 24px 48px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dim);
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+  }
+  .back-link:hover { color: var(--ink); }
+  .back-link svg { flex-shrink: 0; }
+
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .tagline {
+    font-size: 14px;
+    color: var(--mid);
+    font-weight: 400;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    animation: rise 0.45s ease both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-accent { height: 4px; }
+  .plan .card-accent { background: var(--plan); }
+  .there .card-accent { background: var(--there); }
+  .back .card-accent { background: var(--back); }
+  .help .card-accent { background: var(--help); }
+
+  .card-body { padding: 22px 24px 20px; }
+
+  .cat-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .plan .cat-tag { color: var(--plan); }
+  .there .cat-tag { color: var(--there); }
+  .back .cat-tag { color: var(--back); }
+  .help .cat-tag { color: var(--help); }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .card-eng {
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 16px;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+
+  /* ── Template Blocks ── */
+  .template {
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .plan .template { background: var(--plan-soft); }
+  .there .template { background: var(--there-soft); }
+  .back .template { background: var(--back-soft); }
+  .help .template { background: var(--help-soft); }
+
+  .tmpl-pt {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  .plan .tmpl-pt { color: var(--plan); }
+  .there .tmpl-pt { color: var(--there); }
+  .back .tmpl-pt { color: var(--back); }
+  .help .tmpl-pt { color: var(--help); }
+
+  .tmpl-en {
+    font-size: 12px;
+    color: var(--mid);
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .tmpl-slot {
+    background: rgba(0,0,0,0.06);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* ── Fill Examples ── */
+  .fill-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-top: 14px;
+    margin-bottom: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+  }
+  .ex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--hairline);
+    gap: 10px;
+  }
+  .ex-row:last-child { border-bottom: none; }
+  .ex-pt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .ex-en {
+    font-size: 11px;
+    color: var(--dim);
+    font-style: italic;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .card-divider {
+    height: 1px;
+    background: var(--hairline);
+    margin: 14px 0;
+  }
+
+  .tip {
+    text-align: center;
+    margin-top: 32px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--card);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+  .tip strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Practice Tips ── */
+  .practice-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .practice-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--plan), var(--there), var(--back), var(--help));
+  }
+  .practice-body { padding: 22px 24px 20px; }
+  .practice-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .practice-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .practice-item:last-child { border-bottom: none; }
+  .practice-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--plan);
+    background: var(--plan-soft);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .practice-info { flex: 1; }
+  .practice-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .practice-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back-link" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+      <path d="M10 3l-5 5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    All Lessons
+  </a>
+
+  <div class="header">
+    <div class="eyebrow">Português Brasileiro</div>
+    <h1>Modelos de Viagem</h1>
+    <div class="tagline">Reusable sentence templates for talking about travel</div>
+  </div>
+
+  <!-- ════ PLANNING A TRIP ════ -->
+  <div class="card plan">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Antes</div>
+      <div class="card-title">Planejando</div>
+      <div class="card-eng">Planning — talking about future travel</div>
+
+      <div class="section-label">Templates</div>
+
+      <div class="template">
+        <div class="tmpl-pt">Eu vou para <span class="tmpl-slot">lugar</span> em <span class="tmpl-slot">mês</span>.</div>
+        <div class="tmpl-en">I'm going to ___ in ___.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Eu quero conhecer <span class="tmpl-slot">lugar</span>.</div>
+        <div class="tmpl-en">I want to visit ___.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">A gente está pensando em ir para <span class="tmpl-slot">lugar</span>.</div>
+        <div class="tmpl-en">We're thinking about going to ___.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Vou ficar <span class="tmpl-slot">número</span> dias / semanas.</div>
+        <div class="tmpl-en">I'm staying ___ days / weeks.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">O que você recomenda fazer em <span class="tmpl-slot">lugar</span>?</div>
+        <div class="tmpl-en">What do you recommend doing in ___?</div>
+      </div>
+
+      <div class="fill-label">Filled in</div>
+      <div class="ex-row"><span class="ex-pt">Eu vou para Florianópolis em dezembro.</span><span class="ex-en">I'm going to Floripa in December.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu quero conhecer a Chapada Diamantina.</span><span class="ex-en">I want to visit Chapada Diamantina.</span></div>
+      <div class="ex-row"><span class="ex-pt">Vou ficar duas semanas.</span><span class="ex-en">I'm staying two weeks.</span></div>
+    </div>
+  </div>
+
+  <!-- ════ WHILE THERE ════ -->
+  <div class="card there">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Durante</div>
+      <div class="card-title">No Destino</div>
+      <div class="card-eng">While there — navigating and doing things</div>
+
+      <div class="section-label">Templates</div>
+
+      <div class="template">
+        <div class="tmpl-pt">Onde fica <span class="tmpl-slot">lugar</span>?</div>
+        <div class="tmpl-en">Where is ___?</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Como eu chego em / na <span class="tmpl-slot">lugar</span>?</div>
+        <div class="tmpl-en">How do I get to ___?</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Tem <span class="tmpl-slot">coisa</span> por aqui?</div>
+        <div class="tmpl-en">Is there a ___ around here?</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Eu gostaria de fazer <span class="tmpl-slot">atividade</span>.</div>
+        <div class="tmpl-en">I'd like to do ___.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Quanto custa <span class="tmpl-slot">coisa / atividade</span>?</div>
+        <div class="tmpl-en">How much is ___?</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Que horas abre / fecha <span class="tmpl-slot">lugar</span>?</div>
+        <div class="tmpl-en">What time does ___ open / close?</div>
+      </div>
+
+      <div class="fill-label">Filled in</div>
+      <div class="ex-row"><span class="ex-pt">Onde fica a praia mais perto?</span><span class="ex-en">Where's the nearest beach?</span></div>
+      <div class="ex-row"><span class="ex-pt">Tem um mercado por aqui?</span><span class="ex-en">Is there a market around here?</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu gostaria de fazer mergulho.</span><span class="ex-en">I'd like to go diving.</span></div>
+      <div class="ex-row"><span class="ex-pt">Quanto custa o passeio de barco?</span><span class="ex-en">How much is the boat tour?</span></div>
+    </div>
+  </div>
+
+  <!-- ════ TALKING ABOUT IT AFTER ════ -->
+  <div class="card back">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Depois</div>
+      <div class="card-title">De Volta</div>
+      <div class="card-eng">Back home — telling people about the trip</div>
+
+      <div class="section-label">Templates</div>
+
+      <div class="template">
+        <div class="tmpl-pt">Eu fui para <span class="tmpl-slot">lugar</span>.</div>
+        <div class="tmpl-en">I went to ___.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Eu fiquei em <span class="tmpl-slot">lugar / tipo de hospedagem</span>.</div>
+        <div class="tmpl-en">I stayed at ___.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Eu conheci <span class="tmpl-slot">lugar / pessoa</span>.</div>
+        <div class="tmpl-en">I visited / met ___.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">O melhor foi <span class="tmpl-slot">experiência</span>.</div>
+        <div class="tmpl-en">The best part was ___.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">A comida lá é <span class="tmpl-slot">adjetivo</span>.</div>
+        <div class="tmpl-en">The food there is ___.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Eu recomendo <span class="tmpl-slot">lugar / atividade</span>.</div>
+        <div class="tmpl-en">I recommend ___.</div>
+      </div>
+
+      <div class="fill-label">Filled in</div>
+      <div class="ex-row"><span class="ex-pt">Eu fui para Paraty no feriado.</span><span class="ex-en">I went to Paraty on the holiday.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu fiquei numa pousada perto da praia.</span><span class="ex-en">I stayed at an inn near the beach.</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu conheci muita gente legal.</span><span class="ex-en">I met a lot of cool people.</span></div>
+      <div class="ex-row"><span class="ex-pt">O melhor foi a trilha na cachoeira.</span><span class="ex-en">The best part was the waterfall hike.</span></div>
+      <div class="ex-row"><span class="ex-pt">A comida lá é incrível.</span><span class="ex-en">The food there is incredible.</span></div>
+    </div>
+  </div>
+
+  <!-- ════ PROBLEMS & HELP ════ -->
+  <div class="card help">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Emergência</div>
+      <div class="card-title">Preciso de Ajuda</div>
+      <div class="card-eng">Getting help — essential phrases</div>
+
+      <div class="section-label">Templates</div>
+
+      <div class="template">
+        <div class="tmpl-pt">Eu estou perdido/a.</div>
+        <div class="tmpl-en">I'm lost.</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Você pode me ajudar?</div>
+        <div class="tmpl-en">Can you help me?</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Eu não entendi. Pode repetir?</div>
+        <div class="tmpl-en">I didn't understand. Can you repeat?</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Onde tem <span class="tmpl-slot">farmácia / hospital / delegacia</span>?</div>
+        <div class="tmpl-en">Where is there a ___?</div>
+      </div>
+      <div class="template">
+        <div class="tmpl-pt">Eu perdi <span class="tmpl-slot">meu passaporte / minha carteira</span>.</div>
+        <div class="tmpl-en">I lost ___.</div>
+      </div>
+
+      <div class="fill-label">Filled in</div>
+      <div class="ex-row"><span class="ex-pt">Onde tem uma farmácia?</span><span class="ex-en">Where is there a pharmacy?</span></div>
+      <div class="ex-row"><span class="ex-pt">Eu perdi meu passaporte.</span><span class="ex-en">I lost my passport.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    🇧🇷 These templates are fill-in-the-blank by design. Swap out the <strong>highlighted slots</strong> with your own details and you have a ready-made sentence. The more you practise filling them in, the more automatic it becomes.
+  </div>
+
+  <!-- ════ PRACTICE TIPS ════ -->
+  <div class="practice-card">
+    <div class="practice-accent"></div>
+    <div class="practice-body">
+      <div class="practice-title">Dicas de Prática</div>
+      <div class="section-label">Ways to practise with a speaker</div>
+
+      <div class="practice-item">
+        <div class="practice-num">1</div>
+        <div class="practice-info">
+          <div class="practice-name">Template Drill</div>
+          <div class="practice-desc">Your partner gives you a slot word (a city, an activity, an adjective) and you plug it into a random template from this page. Speed builds fluency.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">2</div>
+        <div class="practice-info">
+          <div class="practice-name">Plan a Fake Trip</div>
+          <div class="practice-desc">Use the "Antes" templates to plan an imaginary trip together. Discuss where, when, how long, and what to do — entirely in Portuguese.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">3</div>
+        <div class="practice-info">
+          <div class="practice-name">Trip Interview</div>
+          <div class="practice-desc">One person just "came back" from a trip. The other interviews them using templates from every section: "Onde você foi?" → "O que você fez lá?" → "O melhor foi..."</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">4</div>
+        <div class="practice-info">
+          <div class="practice-name">Tourist Role-Play</div>
+          <div class="practice-desc">One person plays a lost tourist using "Durante" and "Emergência" templates. The other plays a local giving directions and suggestions.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">5</div>
+        <div class="practice-info">
+          <div class="practice-name">Before → After Chain</div>
+          <div class="practice-desc">Start with a planning template ("Eu vou para..."), then fast-forward and retell it using past templates ("Eu fui para..."). Practises switching tenses naturally.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
