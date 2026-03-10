@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lugares e Atividades — Tourist Places & Activities</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nature: #15803D;
+    --nature-soft: #F0FDF4;
+    --nature-border: #86EFAC;
+    --water: #0369A1;
+    --water-soft: #F0F9FF;
+    --water-border: #7DD3FC;
+    --urban: #9333EA;
+    --urban-soft: #FAF5FF;
+    --urban-border: #D8B4FE;
+    --activity: #B45309;
+    --activity-soft: #FFFBEB;
+    --activity-border: #FCD34D;
+    --bg: #FAFAF9;
+    --card: #FFFFFF;
+    --ink: #1C1917;
+    --mid: #57534E;
+    --dim: #A8A29E;
+    --hairline: #F0EEEB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 52px 24px 48px;
+  }
+
+  /* ── Back Link ── */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dim);
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+  }
+  .back-link:hover { color: var(--ink); }
+  .back-link svg { flex-shrink: 0; }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .tagline {
+    font-size: 14px;
+    color: var(--mid);
+    font-weight: 400;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    animation: rise 0.45s ease both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-accent { height: 4px; }
+  .nature .card-accent { background: var(--nature); }
+  .water .card-accent { background: var(--water); }
+  .urban .card-accent { background: var(--urban); }
+  .activity .card-accent { background: var(--activity); }
+
+  .card-body { padding: 22px 24px 20px; }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .cat-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .nature .cat-tag { color: var(--nature); }
+  .water .cat-tag { color: var(--water); }
+  .urban .cat-tag { color: var(--urban); }
+  .activity .cat-tag { color: var(--activity); }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .card-eng {
+    font-size: 12px;
+    color: var(--dim);
+    font-weight: 400;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+
+  /* ── Vocab Grid ── */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .vocab-item {
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-align: center;
+  }
+  .nature .vocab-item { background: var(--nature-soft); }
+  .water .vocab-item { background: var(--water-soft); }
+  .urban .vocab-item { background: var(--urban-soft); }
+  .activity .vocab-item { background: var(--activity-soft); }
+
+  .vocab-pt {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .nature .vocab-pt { color: var(--nature); }
+  .water .vocab-pt { color: var(--water); }
+  .urban .vocab-pt { color: var(--urban); }
+  .activity .vocab-pt { color: var(--activity); }
+
+  .vocab-en {
+    font-size: 10px;
+    color: var(--dim);
+  }
+
+  /* ── Article Note ── */
+  .article-note {
+    font-size: 11px;
+    color: var(--mid);
+    line-height: 1.5;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #FEFCE8;
+    border: 1px solid #FDE68A;
+    margin-bottom: 16px;
+  }
+  .article-note strong { color: #92400E; font-weight: 600; }
+
+  /* ── Examples ── */
+  .ex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--hairline);
+    gap: 10px;
+  }
+  .ex-row:last-child { border-bottom: none; }
+  .ex-pt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .ex-en {
+    font-size: 11px;
+    color: var(--dim);
+    font-style: italic;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .ex-sub-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-top: 12px;
+    margin-bottom: 6px;
+    padding-top: 10px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  /* ── Divider ── */
+  .card-divider {
+    height: 1px;
+    background: var(--hairline);
+    margin: 14px 0;
+  }
+
+  /* ── Tip ── */
+  .tip {
+    text-align: center;
+    margin-top: 32px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--card);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+  .tip strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Practice Tips ── */
+  .practice-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .practice-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--nature), var(--water), var(--urban), var(--activity));
+  }
+  .practice-body { padding: 22px 24px 20px; }
+  .practice-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .practice-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .practice-item:last-child { border-bottom: none; }
+  .practice-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--nature);
+    background: var(--nature-soft);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .practice-info { flex: 1; }
+  .practice-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .practice-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back-link" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+      <path d="M10 3l-5 5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    All Lessons
+  </a>
+
+  <div class="header">
+    <div class="eyebrow">Português Brasileiro</div>
+    <h1>Lugares e Atividades</h1>
+    <div class="tagline">Tourist Places & Outdoor Activities</div>
+  </div>
+
+  <!-- ════ NATURE & LANDSCAPE ════ -->
+  <div class="card nature">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Natureza</div>
+      <div class="card-title">Paisagens Naturais</div>
+      <div class="card-eng">Natural landscapes</div>
+
+      <div class="card-divider"></div>
+
+      <div class="section-label">Places</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-pt">a montanha</div><div class="vocab-en">mountain</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a serra</div><div class="vocab-en">mountain range</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o morro</div><div class="vocab-en">hill</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o vale</div><div class="vocab-en">valley</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a floresta</div><div class="vocab-en">forest</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a mata</div><div class="vocab-en">woods / jungle</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o parque</div><div class="vocab-en">park</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a trilha</div><div class="vocab-en">trail / path</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a cachoeira</div><div class="vocab-en">waterfall</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a caverna</div><div class="vocab-en">cave</div></div>
+      </div>
+
+      <div class="article-note">
+        💡 <strong>a</strong> = feminine, <strong>o</strong> = masculine — the article tells you the gender for adjectives and demonstratives.
+      </div>
+
+      <div class="section-label">Examples</div>
+      <div class="ex-row"><span class="ex-pt">Vamos fazer trilha na serra.</span><span class="ex-en">Let's hike in the mountains.</span></div>
+      <div class="ex-row"><span class="ex-pt">A cachoeira é linda!</span><span class="ex-en">The waterfall is beautiful!</span></div>
+      <div class="ex-row"><span class="ex-pt">Tem um parque perto daqui.</span><span class="ex-en">There's a park near here.</span></div>
+    </div>
+  </div>
+
+  <!-- ════ WATER & COAST ════ -->
+  <div class="card water">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Água</div>
+      <div class="card-title">Água e Litoral</div>
+      <div class="card-eng">Water & coastline</div>
+
+      <div class="card-divider"></div>
+
+      <div class="section-label">Places</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-pt">a praia</div><div class="vocab-en">beach</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o mar</div><div class="vocab-en">sea / ocean</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o lago</div><div class="vocab-en">lake</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a lagoa</div><div class="vocab-en">lagoon</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o rio</div><div class="vocab-en">river</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a ilha</div><div class="vocab-en">island</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o porto</div><div class="vocab-en">harbour / port</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a baía</div><div class="vocab-en">bay</div></div>
+      </div>
+
+      <div class="section-label">Examples</div>
+      <div class="ex-row"><span class="ex-pt">A praia aqui é incrível.</span><span class="ex-en">The beach here is incredible.</span></div>
+      <div class="ex-row"><span class="ex-pt">Vamos nadar no lago?</span><span class="ex-en">Shall we swim in the lake?</span></div>
+      <div class="ex-row"><span class="ex-pt">O rio passa pela cidade.</span><span class="ex-en">The river runs through the city.</span></div>
+    </div>
+  </div>
+
+  <!-- ════ URBAN & BUILT ════ -->
+  <div class="card urban">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Urbano</div>
+      <div class="card-title">Lugares na Cidade</div>
+      <div class="card-eng">Places in the city</div>
+
+      <div class="card-divider"></div>
+
+      <div class="section-label">Places</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-pt">o museu</div><div class="vocab-en">museum</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a igreja</div><div class="vocab-en">church</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o centro histórico</div><div class="vocab-en">historic centre</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a praça</div><div class="vocab-en">square / plaza</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o mercado</div><div class="vocab-en">market</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a feira</div><div class="vocab-en">street market / fair</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o mirante</div><div class="vocab-en">viewpoint / lookout</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o monumento</div><div class="vocab-en">monument</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a ruína</div><div class="vocab-en">ruin</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o jardim botânico</div><div class="vocab-en">botanical garden</div></div>
+      </div>
+
+      <div class="section-label">Examples</div>
+      <div class="ex-row"><span class="ex-pt">Visitamos o centro histórico.</span><span class="ex-en">We visited the historic centre.</span></div>
+      <div class="ex-row"><span class="ex-pt">A praça fica no centro.</span><span class="ex-en">The square is in the centre.</span></div>
+      <div class="ex-row"><span class="ex-pt">Esse mirante tem a melhor vista.</span><span class="ex-en">That lookout has the best view.</span></div>
+    </div>
+  </div>
+
+  <!-- ════ ACTIVITIES ════ -->
+  <div class="card activity">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Atividades</div>
+      <div class="card-title">Atividades Turísticas</div>
+      <div class="card-eng">Tourist activities</div>
+
+      <div class="card-divider"></div>
+
+      <div class="section-label">Things to do</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-pt">a trilha / caminhada</div><div class="vocab-en">hike / walk</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o passeio de barco</div><div class="vocab-en">boat tour</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o mergulho</div><div class="vocab-en">diving / snorkelling</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o surfe</div><div class="vocab-en">surfing</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o rapel</div><div class="vocab-en">abseiling / rappelling</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a escalada</div><div class="vocab-en">rock climbing</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o passeio a cavalo</div><div class="vocab-en">horseback riding</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a tirolesa</div><div class="vocab-en">zip line</div></div>
+      </div>
+
+      <div class="section-label">People & services</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><div class="vocab-pt">o/a guia turístico/a</div><div class="vocab-en">tour guide</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o passeio guiado</div><div class="vocab-en">guided tour</div></div>
+        <div class="vocab-item"><div class="vocab-pt">o ponto turístico</div><div class="vocab-en">tourist attraction</div></div>
+        <div class="vocab-item"><div class="vocab-pt">a excursão</div><div class="vocab-en">excursion / day trip</div></div>
+      </div>
+
+      <div class="card-divider"></div>
+
+      <div class="section-label">Useful phrases</div>
+      <div class="ex-row"><span class="ex-pt">Tem passeio guiado?</span><span class="ex-en">Is there a guided tour?</span></div>
+      <div class="ex-row"><span class="ex-pt">Quanto custa a excursão?</span><span class="ex-en">How much is the excursion?</span></div>
+      <div class="ex-row"><span class="ex-pt">Onde começa a trilha?</span><span class="ex-en">Where does the trail start?</span></div>
+      <div class="ex-row"><span class="ex-pt">Precisa de guia?</span><span class="ex-en">Do you need a guide?</span></div>
+      <div class="ex-row"><span class="ex-pt">A caminhada é difícil?</span><span class="ex-en">Is the hike hard?</span></div>
+      <div class="ex-row"><span class="ex-pt">Quero fazer mergulho.</span><span class="ex-en">I want to go diving.</span></div>
+
+      <div class="ex-sub-label">Describing places</div>
+      <div class="ex-row"><span class="ex-pt">O lugar é lindo.</span><span class="ex-en">The place is beautiful.</span></div>
+      <div class="ex-row"><span class="ex-pt">A vista é maravilhosa!</span><span class="ex-en">The view is wonderful!</span></div>
+      <div class="ex-row"><span class="ex-pt">É um lugar bem tranquilo.</span><span class="ex-en">It's a really peaceful place.</span></div>
+      <div class="ex-row"><span class="ex-pt">Vale a pena visitar.</span><span class="ex-en">It's worth visiting.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    🇧🇷 Brazilians use <strong>"fazer + activity"</strong> a lot: fazer trilha, fazer mergulho, fazer rapel.<br>
+    Think of <strong>"fazer"</strong> as "to do" — it pairs with almost any activity noun.
+  </div>
+
+  <!-- ════ PRACTICE TIPS ════ -->
+  <div class="practice-card">
+    <div class="practice-accent"></div>
+    <div class="practice-body">
+      <div class="practice-title">Dicas de Prática</div>
+      <div class="section-label">Ways to practise with a speaker</div>
+
+      <div class="practice-item">
+        <div class="practice-num">1</div>
+        <div class="practice-info">
+          <div class="practice-name">Dream Trip</div>
+          <div class="practice-desc">Describe your ideal holiday to your partner using the place vocabulary: "Eu quero ir para uma ilha com praia e cachoeira." They ask follow-up questions about activities.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">2</div>
+        <div class="practice-info">
+          <div class="practice-name">Tour Guide Role-Play</div>
+          <div class="practice-desc">One person plays the tour guide ("Aqui temos o centro histórico..."), the other plays the tourist asking questions ("Tem passeio guiado?" "Quanto custa?").</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">3</div>
+        <div class="practice-info">
+          <div class="practice-name">Photo Geography</div>
+          <div class="practice-desc">Show travel photos or Google Maps images and name everything you see in Portuguese — a praia, o morro, a igreja, o rio. Race to identify the most places.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">4</div>
+        <div class="practice-info">
+          <div class="practice-name">Activity Bucket List</div>
+          <div class="practice-desc">Take turns saying "Eu quero fazer..." with a different activity each time. If you repeat one or can't think of a new one, you lose. Great for memorising activity vocab.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">5</div>
+        <div class="practice-info">
+          <div class="practice-name">Trip Recap</div>
+          <div class="practice-desc">Describe a real trip you took, but in Portuguese. Combine this lesson with the past tense lesson — "Fui para a serra, fiz trilha e vi uma cachoeira incrível!"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
