@@ -340,6 +340,59 @@
   }
   .tip strong { color: var(--ink); font-weight: 600; }
 
+  /* ── Practice Tips ── */
+  .practice-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .practice-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--z1), var(--z2), var(--z3));
+  }
+  .practice-body { padding: 22px 24px 20px; }
+  .practice-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .practice-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .practice-item:last-child { border-bottom: none; }
+  .practice-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--z1);
+    background: var(--z1-soft);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .practice-info { flex: 1; }
+  .practice-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .practice-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
   /* ── Back Link ── */
   .back-link {
     display: inline-flex;
@@ -558,6 +611,55 @@
   <div class="tip">
     🇧🇷 In everyday Brazilian speech, <strong>esse / essa / isso</strong> covers almost everything nearby.<br>
     <strong>Este / esta / isto</strong> is more formal or written. <strong>Aquele / aquela / aquilo</strong> is always for far away.
+  </div>
+
+  <!-- ════ PRACTICE TIPS ════ -->
+  <div class="practice-card">
+    <div class="practice-accent"></div>
+    <div class="practice-body">
+      <div class="practice-title">Dicas de Prática</div>
+      <div class="section-label">Ways to practise with a speaker</div>
+
+      <div class="practice-item">
+        <div class="practice-num">1</div>
+        <div class="practice-info">
+          <div class="practice-name">Point and Name</div>
+          <div class="practice-desc">Walk around a room or street with your partner and point at objects. Use "este/esta" for things near you, "esse/essa" for things near them, and "aquele/aquela" for things far away.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">2</div>
+        <div class="practice-info">
+          <div class="practice-name">The "Qual?" Game</div>
+          <div class="practice-desc">Your partner asks "Qual livro?" (Which book?) and you answer using the right demonstrative: "Este aqui" / "Esse aí" / "Aquele lá" based on where it is.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">3</div>
+        <div class="practice-info">
+          <div class="practice-name">Photo Descriptions</div>
+          <div class="practice-desc">Look at a photo together. Describe things using demonstratives — "Essa pessoa aqui é..." for someone nearby in the photo, "Aquele prédio lá é..." for something in the background.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">4</div>
+        <div class="practice-info">
+          <div class="practice-name">Neutral vs. Gendered Drill</div>
+          <div class="practice-desc">Your partner points at a specific object (use gendered: "esse copo") or gestures vaguely at a situation (use neutral: "isso é estranho"). Practise switching between them.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">5</div>
+        <div class="practice-info">
+          <div class="practice-name">Zone Swap</div>
+          <div class="practice-desc">Place 3 objects at different distances. Your partner moves them and you re-describe each one, switching demonstratives as the zones change.</div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
