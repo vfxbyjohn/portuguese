@@ -269,6 +269,74 @@
     color: var(--mid);
     line-height: 1.5;
   }
+
+  /* ── Written Exercises ── */
+  .written-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .written-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--noun), var(--verb), var(--pron));
+  }
+  .written-body { padding: 22px 24px 20px; }
+  .written-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .written-subtitle {
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 20px;
+  }
+  .concept-group {
+    margin-bottom: 20px;
+  }
+  .concept-group:last-child { margin-bottom: 0; }
+  .exercise-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .exercise-item:last-child { border-bottom: none; }
+  .exercise-prompt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .exercise-prompt strong { font-weight: 700; }
+  .answer-toggle {
+    font-size: 12px;
+    color: var(--mid);
+    cursor: pointer;
+    line-height: 1.5;
+  }
+  .answer-toggle summary {
+    font-weight: 600;
+    color: var(--noun);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    list-style: none;
+    user-select: none;
+  }
+  .answer-toggle summary::-webkit-details-marker { display: none; }
+  .answer-toggle summary::before { content: '+ Show answer'; }
+  .answer-toggle[open] summary::before { content: '− Hide answer'; }
+  .answer-text {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 6px 10px;
+    background: var(--hairline);
+    border-radius: 6px;
+  }
 </style>
 </head>
 <body>
@@ -459,6 +527,76 @@
           <div class="practice-desc">Make statements using indefinite pronouns and your partner responds: "Ninguém gosta de acordar cedo" → "Mentira! Eu gosto!" Keeps it fun and conversational.</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ════ WRITTEN EXERCISES ════ -->
+  <div class="written-card">
+    <div class="written-accent"></div>
+    <div class="written-body">
+      <div class="written-title">Exercícios Escritos</div>
+      <div class="written-subtitle">Write your answers, then check below</div>
+
+      <!-- ── Substantivos ── -->
+      <div class="concept-group">
+        <div class="section-label">Substantivos</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Write the correct article (<strong>o</strong> or <strong>a</strong>) for each noun: ___ casa, ___ livro, ___ cidade, ___ carro, ___ praia, ___ trabalho</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text"><strong>a</strong> casa, <strong>o</strong> livro, <strong>a</strong> cidade, <strong>o</strong> carro, <strong>a</strong> praia, <strong>o</strong> trabalho</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "The food is good."<br>b) "The beach is beautiful."<br>c) "The city is big."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) A comida é boa.<br>b) A praia é bonita. / A praia é linda.<br>c) A cidade é grande.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Rewrite in the plural:<br>a) "O livro é novo." → ___<br>b) "A casa é grande." → ___<br>c) "O amigo é legal." → ___</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Os livros são novos.<br>b) As casas são grandes.<br>c) Os amigos são legais.</div></details>
+        </div>
+      </div>
+
+      <!-- ── Verbos ── -->
+      <div class="concept-group">
+        <div class="section-label">Verbos</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Identify the verb group (<strong>-ar</strong>, <strong>-er</strong>, or <strong>-ir</strong>):<br>morar ___ &nbsp; comer ___ &nbsp; sair ___ &nbsp; gostar ___ &nbsp; abrir ___ &nbsp; beber ___</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">morar <strong>-ar</strong> &nbsp; comer <strong>-er</strong> &nbsp; sair <strong>-ir</strong> &nbsp; gostar <strong>-ar</strong> &nbsp; abrir <strong>-ir</strong> &nbsp; beber <strong>-er</strong></div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "I speak Portuguese."<br>b) "She lives in Brazil."<br>c) "They go out every Saturday."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Eu falo português.<br>b) Ela mora no Brasil.<br>c) Eles saem todo sábado.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Complete with the correct verb form:<br>a) Eu ___ (morar) no Brasil.<br>b) Ela ___ (falar) inglês.<br>c) A gente ___ (comer) bem aqui.</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Eu <strong>moro</strong> no Brasil.<br>b) Ela <strong>fala</strong> inglês.<br>c) A gente <strong>come</strong> bem aqui.</div></details>
+        </div>
+      </div>
+
+      <!-- ── Pronomes Indefinidos ── -->
+      <div class="concept-group">
+        <div class="section-label">Pronomes Indefinidos</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Fill in with the correct indefinite pronoun:<br>a) ___ sabe a resposta. (No one)<br>b) ___ veio. (Everyone)<br>c) Tem ___ errado. (something)</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) <strong>Ninguém</strong> sabe a resposta.<br>b) <strong>Todo mundo</strong> veio.<br>c) Tem <strong>algo</strong> errado.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "Someone called you."<br>b) "Nothing was left."<br>c) "I want another coffee."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Alguém ligou para você.<br>b) Não sobrou nada.<br>c) Quero outro café.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Choose <strong>algum, alguma, alguns,</strong> or <strong>algumas</strong>:<br>a) ___ pessoas saíram cedo.<br>b) ___ restaurante está aberto?<br>c) Tem ___ problema?</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) <strong>Algumas</strong> pessoas saíram cedo.<br>b) <strong>Algum</strong> restaurante está aberto?<br>c) Tem <strong>algum</strong> problema?</div></details>
+        </div>
+      </div>
+
     </div>
   </div>
 

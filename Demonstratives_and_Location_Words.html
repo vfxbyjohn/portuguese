@@ -393,6 +393,74 @@
     line-height: 1.5;
   }
 
+  /* ── Written Exercises ── */
+  .written-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .written-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--z1), var(--z2), var(--z3));
+  }
+  .written-body { padding: 22px 24px 20px; }
+  .written-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .written-subtitle {
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 20px;
+  }
+  .concept-group {
+    margin-bottom: 20px;
+  }
+  .concept-group:last-child { margin-bottom: 0; }
+  .exercise-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .exercise-item:last-child { border-bottom: none; }
+  .exercise-prompt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .exercise-prompt strong { font-weight: 700; }
+  .answer-toggle {
+    font-size: 12px;
+    color: var(--mid);
+    cursor: pointer;
+    line-height: 1.5;
+  }
+  .answer-toggle summary {
+    font-weight: 600;
+    color: var(--z1);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    list-style: none;
+    user-select: none;
+  }
+  .answer-toggle summary::-webkit-details-marker { display: none; }
+  .answer-toggle summary::before { content: '+ Show answer'; }
+  .answer-toggle[open] summary::before { content: '− Hide answer'; }
+  .answer-text {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 6px 10px;
+    background: var(--hairline);
+    border-radius: 6px;
+  }
+
   /* ── Back Link ── */
   .back-link {
     display: inline-flex;
@@ -659,6 +727,76 @@
           <div class="practice-desc">Place 3 objects at different distances. Your partner moves them and you re-describe each one, switching demonstratives as the zones change.</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ════ WRITTEN EXERCISES ════ -->
+  <div class="written-card">
+    <div class="written-accent"></div>
+    <div class="written-body">
+      <div class="written-title">Exercícios Escritos</div>
+      <div class="written-subtitle">Write your answers, then check below</div>
+
+      <!-- ── Zona 1: Perto de Mim ── -->
+      <div class="concept-group">
+        <div class="section-label">Zona 1 — este / esta / isto</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Fill in with <strong>este, esta, estes,</strong> or <strong>estas</strong>:<br>a) ___ livro aqui é meu.<br>b) ___ flores são lindas.<br>c) ___ casa aqui é nova.<br>d) ___ sapatos são caros.</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) <strong>Este</strong> livro aqui é meu.<br>b) <strong>Estas</strong> flores são lindas.<br>c) <strong>Esta</strong> casa aqui é nova.<br>d) <strong>Estes</strong> sapatos são caros.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate using Zone 1 demonstratives:<br>a) "This book is mine."<br>b) "These shoes are expensive."<br>c) "What is this?" (general/neutral)</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Este livro é meu.<br>b) Estes sapatos são caros.<br>c) O que é isto?</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Rewrite using the neutral form <strong>isto</strong> instead of the gendered form:<br>a) "Este objeto é estranho." → ___<br>b) "Esta coisa é bonita." → ___</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Isto é estranho.<br>b) Isto é bonito. (adjective changes to masculine default with neutral)</div></details>
+        </div>
+      </div>
+
+      <!-- ── Zona 2: Perto de Você ── -->
+      <div class="concept-group">
+        <div class="section-label">Zona 2 — esse / essa / isso</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Fill in with <strong>esse, essa, esses,</strong> or <strong>essas</strong>:<br>a) ___ caderno aí é seu?<br>b) ___ chaves são da Maria.<br>c) ___ caneta não funciona.<br>d) ___ documentos são importantes.</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) <strong>Esse</strong> caderno aí é seu?<br>b) <strong>Essas</strong> chaves são da Maria.<br>c) <strong>Essa</strong> caneta não funciona.<br>d) <strong>Esses</strong> documentos são importantes.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate using Zone 2 demonstratives:<br>a) "That notebook is yours?"<br>b) "That doesn't make sense." (neutral)<br>c) "Those documents are important."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Esse caderno é seu?<br>b) Isso não faz sentido.<br>c) Esses documentos são importantes.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Choose gendered or neutral:<br>a) Point at a specific pen near your friend → ___ caneta.<br>b) React to what someone just said → ___ é verdade!<br>c) Agree with an idea → ___ mesmo!</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) <strong>Essa</strong> caneta. (gendered — specific noun)<br>b) <strong>Isso</strong> é verdade! (neutral — an idea)<br>c) <strong>Isso</strong> mesmo! (neutral — agreeing with a statement)</div></details>
+        </div>
+      </div>
+
+      <!-- ── Zona 3: Longe de Nós ── -->
+      <div class="concept-group">
+        <div class="section-label">Zona 3 — aquele / aquela / aquilo</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Fill in with <strong>aquele, aquela, aqueles,</strong> or <strong>aquelas</strong>:<br>a) ___ carro lá é caro.<br>b) ___ montanhas são bonitas.<br>c) ___ igreja é antiga.<br>d) ___ prédios são novos.</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) <strong>Aquele</strong> carro lá é caro.<br>b) <strong>Aquelas</strong> montanhas são bonitas.<br>c) <strong>Aquela</strong> igreja é antiga.<br>d) <strong>Aqueles</strong> prédios são novos.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate using Zone 3 demonstratives:<br>a) "That car over there is expensive."<br>b) "Did you see that?" (neutral)<br>c) "Those buildings are new."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Aquele carro lá é caro.<br>b) Você viu aquilo?<br>c) Aqueles prédios são novos.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Change the zone — rewrite from Zone 2 to Zone 3:<br>a) "Esse livro aí é bom." → ___<br>b) "Essa casa aí é bonita." → ___<br>c) "Isso é interessante." → ___</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Aquele livro lá é bom.<br>b) Aquela casa lá é bonita.<br>c) Aquilo é interessante.</div></details>
+        </div>
+      </div>
+
     </div>
   </div>
 

@@ -301,6 +301,74 @@
     color: var(--mid);
     line-height: 1.5;
   }
+
+  /* ── Written Exercises ── */
+  .written-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .written-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--nature), var(--water), var(--urban), var(--activity));
+  }
+  .written-body { padding: 22px 24px 20px; }
+  .written-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .written-subtitle {
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 20px;
+  }
+  .concept-group {
+    margin-bottom: 20px;
+  }
+  .concept-group:last-child { margin-bottom: 0; }
+  .exercise-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .exercise-item:last-child { border-bottom: none; }
+  .exercise-prompt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .exercise-prompt strong { font-weight: 700; }
+  .answer-toggle {
+    font-size: 12px;
+    color: var(--mid);
+    cursor: pointer;
+    line-height: 1.5;
+  }
+  .answer-toggle summary {
+    font-weight: 600;
+    color: var(--nature);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    list-style: none;
+    user-select: none;
+  }
+  .answer-toggle summary::-webkit-details-marker { display: none; }
+  .answer-toggle summary::before { content: '+ Show answer'; }
+  .answer-toggle[open] summary::before { content: '− Hide answer'; }
+  .answer-text {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 6px 10px;
+    background: var(--hairline);
+    border-radius: 6px;
+  }
 </style>
 </head>
 <body>
@@ -513,6 +581,96 @@
           <div class="practice-desc">Describe a real trip you took, but in Portuguese. Combine this lesson with the past tense lesson — "Fui para a serra, fiz trilha e vi uma cachoeira incrível!"</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ════ WRITTEN EXERCISES ════ -->
+  <div class="written-card">
+    <div class="written-accent"></div>
+    <div class="written-body">
+      <div class="written-title">Exercícios Escritos</div>
+      <div class="written-subtitle">Write your answers, then check below</div>
+
+      <!-- ── Paisagens Naturais ── -->
+      <div class="concept-group">
+        <div class="section-label">Paisagens Naturais</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Write the correct article (<strong>o</strong> or <strong>a</strong>):<br>___ montanha, ___ morro, ___ floresta, ___ parque, ___ cachoeira, ___ vale</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text"><strong>a</strong> montanha, <strong>o</strong> morro, <strong>a</strong> floresta, <strong>o</strong> parque, <strong>a</strong> cachoeira, <strong>o</strong> vale</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "Let's hike in the mountains."<br>b) "The waterfall is beautiful!"<br>c) "There's a park near here."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Vamos fazer trilha na serra.<br>b) A cachoeira é linda!<br>c) Tem um parque perto daqui.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Write 3 sentences describing a natural place you know or would like to visit, using at least 3 vocabulary words from this section (montanha, serra, floresta, trilha, cachoeira, etc.).</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>Eu quero visitar a serra gaúcha.<br>Tem muitas trilhas na floresta.<br>A cachoeira lá é incrível!<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+      </div>
+
+      <!-- ── Água e Litoral ── -->
+      <div class="concept-group">
+        <div class="section-label">Água e Litoral</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Write the correct article (<strong>o</strong> or <strong>a</strong>):<br>___ praia, ___ mar, ___ lago, ___ ilha, ___ rio, ___ baía</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text"><strong>a</strong> praia, <strong>o</strong> mar, <strong>o</strong> lago, <strong>a</strong> ilha, <strong>o</strong> rio, <strong>a</strong> baía</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "The beach here is incredible."<br>b) "The river runs through the city."<br>c) "Shall we swim in the lake?"</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) A praia aqui é incrível.<br>b) O rio passa pela cidade.<br>c) Vamos nadar no lago?</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Write 2 sentences about a beach, river, or island you know, using vocabulary from this section.</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>A praia de Copacabana é muito famosa.<br>O mar lá é bem quente no verão.<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+      </div>
+
+      <!-- ── Lugares na Cidade ── -->
+      <div class="concept-group">
+        <div class="section-label">Lugares na Cidade</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Match the Portuguese to English:<br>a) o museu → ___<br>b) a praça → ___<br>c) o mercado → ___<br>d) o mirante → ___<br><em>Choices: viewpoint, museum, market, square</em></div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) o museu → <strong>museum</strong><br>b) a praça → <strong>square</strong><br>c) o mercado → <strong>market</strong><br>d) o mirante → <strong>viewpoint</strong></div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "We visited the historic centre."<br>b) "That lookout has the best view."<br>c) "The square is in the centre."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Visitamos o centro histórico.<br>b) Esse mirante tem a melhor vista.<br>c) A praça fica no centro.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Write 3 sentences about a city you visited (or want to visit), using vocabulary from this section (museu, igreja, praça, mercado, mirante, etc.).</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>Eu visitei o museu de arte moderna.<br>A praça principal é muito bonita.<br>O mirante tem uma vista incrível da cidade.<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+      </div>
+
+      <!-- ── Atividades Turísticas ── -->
+      <div class="concept-group">
+        <div class="section-label">Atividades Turísticas</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Match the Portuguese to English:<br>a) o mergulho → ___<br>b) o surfe → ___<br>c) a tirolesa → ___<br>d) a escalada → ___<br><em>Choices: rock climbing, zip line, diving, surfing</em></div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) o mergulho → <strong>diving</strong><br>b) o surfe → <strong>surfing</strong><br>c) a tirolesa → <strong>zip line</strong><br>d) a escalada → <strong>rock climbing</strong></div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "Is there a guided tour?"<br>b) "How much is the excursion?"<br>c) "I want to go diving."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Tem passeio guiado?<br>b) Quanto custa a excursão?<br>c) Quero fazer mergulho.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Write a "bucket list" of 3 activities using <strong>"Eu quero fazer ___."</strong></div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>Eu quero fazer mergulho.<br>Eu quero fazer trilha na serra.<br>Eu quero fazer tirolesa.<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+      </div>
+
     </div>
   </div>
 

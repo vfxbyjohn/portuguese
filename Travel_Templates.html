@@ -280,6 +280,74 @@
     color: var(--mid);
     line-height: 1.5;
   }
+
+  /* ── Written Exercises ── */
+  .written-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .written-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--plan), var(--there), var(--back), var(--help));
+  }
+  .written-body { padding: 22px 24px 20px; }
+  .written-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .written-subtitle {
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 20px;
+  }
+  .concept-group {
+    margin-bottom: 20px;
+  }
+  .concept-group:last-child { margin-bottom: 0; }
+  .exercise-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .exercise-item:last-child { border-bottom: none; }
+  .exercise-prompt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .exercise-prompt strong { font-weight: 700; }
+  .answer-toggle {
+    font-size: 12px;
+    color: var(--mid);
+    cursor: pointer;
+    line-height: 1.5;
+  }
+  .answer-toggle summary {
+    font-weight: 600;
+    color: var(--plan);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    list-style: none;
+    user-select: none;
+  }
+  .answer-toggle summary::-webkit-details-marker { display: none; }
+  .answer-toggle summary::before { content: '+ Show answer'; }
+  .answer-toggle[open] summary::before { content: '− Hide answer'; }
+  .answer-text {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 6px 10px;
+    background: var(--hairline);
+    border-radius: 6px;
+  }
 </style>
 </head>
 <body>
@@ -510,6 +578,96 @@
           <div class="practice-desc">Start with a planning template ("Eu vou para..."), then fast-forward and retell it using past templates ("Eu fui para..."). Practises switching tenses naturally.</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ════ WRITTEN EXERCISES ════ -->
+  <div class="written-card">
+    <div class="written-accent"></div>
+    <div class="written-body">
+      <div class="written-title">Exercícios Escritos</div>
+      <div class="written-subtitle">Write your answers, then check below</div>
+
+      <!-- ── Planejando ── -->
+      <div class="concept-group">
+        <div class="section-label">Planejando — Planning</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Fill in the templates with your own details:<br>a) "Eu vou para ___ em ___."<br>b) "Vou ficar ___ dias."<br>c) "Eu quero conhecer ___."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>a) Eu vou para Florianópolis em dezembro.<br>b) Vou ficar cinco dias.<br>c) Eu quero conhecer a Chapada Diamantina.<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "I want to visit Chapada Diamantina."<br>b) "I'm staying two weeks."<br>c) "What do you recommend doing in Rio?"</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Eu quero conhecer a Chapada Diamantina.<br>b) Vou ficar duas semanas.<br>c) O que você recomenda fazer no Rio?</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Write 3 planning sentences about an imaginary trip to Bahia, using the templates from this section.</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>Eu vou para Salvador em janeiro.<br>Vou ficar uma semana.<br>Eu quero conhecer o Pelourinho.<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+      </div>
+
+      <!-- ── No Destino ── -->
+      <div class="concept-group">
+        <div class="section-label">No Destino — While There</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Fill in the templates:<br>a) "Onde fica ___?" (the nearest beach)<br>b) "Tem ___ por aqui?" (a market)<br>c) "Quanto custa ___?" (the boat tour)</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Onde fica a praia mais perto?<br>b) Tem um mercado por aqui?<br>c) Quanto custa o passeio de barco?</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "Where's the nearest beach?"<br>b) "How much is the boat tour?"<br>c) "I'd like to go diving."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Onde fica a praia mais perto?<br>b) Quanto custa o passeio de barco?<br>c) Eu gostaria de fazer mergulho.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Write 3 questions you would ask as a tourist arriving in a new city, using the templates.</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>Onde fica o centro histórico?<br>Tem um restaurante bom por aqui?<br>Que horas abre o museu?<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+      </div>
+
+      <!-- ── De Volta ── -->
+      <div class="concept-group">
+        <div class="section-label">De Volta — Coming Back</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Fill in with your own details:<br>a) "Eu fui para ___."<br>b) "O melhor foi ___."<br>c) "A comida lá é ___."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>a) Eu fui para Paraty.<br>b) O melhor foi a trilha na cachoeira.<br>c) A comida lá é incrível.<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "I went to Paraty on the holiday."<br>b) "The food there is incredible."<br>c) "I recommend the waterfall hike."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Eu fui para Paraty no feriado.<br>b) A comida lá é incrível.<br>c) Eu recomendo a trilha na cachoeira.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Write a 3-sentence trip report about a real or imaginary trip, using the "De Volta" templates.</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>Eu fui para Fernando de Noronha nas férias.<br>Eu fiquei numa pousada perto da praia.<br>O melhor foi o mergulho — a água é cristalina!<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+      </div>
+
+      <!-- ── Preciso de Ajuda ── -->
+      <div class="concept-group">
+        <div class="section-label">Preciso de Ajuda — Getting Help</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Translate to Portuguese:<br>a) "I'm lost."<br>b) "Can you help me?"<br>c) "I didn't understand. Can you repeat?"</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Eu estou perdido/a.<br>b) Você pode me ajudar?<br>c) Eu não entendi. Pode repetir?</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Fill in the templates:<br>a) "Onde tem ___?" (a pharmacy)<br>b) "Eu perdi ___." (my wallet)<br>c) "Onde tem ___?" (a hospital)</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Onde tem uma farmácia?<br>b) Eu perdi minha carteira.<br>c) Onde tem um hospital?</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Write a short 3-line dialogue where a tourist asks for help finding a pharmacy.</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>Turista: Você pode me ajudar? Onde tem uma farmácia?<br>Local: Tem uma farmácia na próxima rua, à direita.<br>Turista: Obrigado/a!<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+      </div>
+
     </div>
   </div>
 
