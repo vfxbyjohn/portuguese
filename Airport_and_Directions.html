@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No Aeroporto — Airport Vocabulary & Directions</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --airport: #1E40AF;
+    --airport-soft: #EFF6FF;
+    --airport-border: #93C5FD;
+    --dir: #0D9488;
+    --dir-soft: #F0FDFA;
+    --dir-border: #5EEAD4;
+    --work: #6D28D9;
+    --work-soft: #F5F3FF;
+    --work-border: #C4B5FD;
+    --expr: #B45309;
+    --expr-soft: #FFFBEB;
+    --expr-border: #FCD34D;
+    --bg: #FAFAF9;
+    --card: #FFFFFF;
+    --ink: #1C1917;
+    --mid: #57534E;
+    --dim: #A8A29E;
+    --hairline: #F0EEEB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 52px 24px 48px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dim);
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+  }
+  .back-link:hover { color: var(--ink); }
+  .back-link svg { flex-shrink: 0; }
+
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .tagline {
+    font-size: 14px;
+    color: var(--mid);
+    font-weight: 400;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    animation: rise 0.45s ease both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-accent { height: 4px; }
+  .airport .card-accent { background: var(--airport); }
+  .dir .card-accent { background: var(--dir); }
+  .work .card-accent { background: var(--work); }
+  .expr .card-accent { background: var(--expr); }
+
+  .card-body { padding: 22px 24px 20px; }
+
+  .cat-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .airport .cat-tag { color: var(--airport); }
+  .dir .cat-tag { color: var(--dir); }
+  .work .cat-tag { color: var(--work); }
+  .expr .cat-tag { color: var(--expr); }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .card-eng {
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 16px;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+
+  /* ── Chip Grid ── */
+  .chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .chip {
+    border-radius: 8px;
+    padding: 7px 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+  }
+  .airport .chip { background: var(--airport-soft); border: 1px solid var(--airport-border); }
+  .dir .chip { background: var(--dir-soft); border: 1px solid var(--dir-border); }
+  .work .chip { background: var(--work-soft); border: 1px solid var(--work-border); }
+  .expr .chip { background: var(--expr-soft); border: 1px solid var(--expr-border); }
+
+  .chip-pt {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .airport .chip-pt { color: var(--airport); }
+  .dir .chip-pt { color: var(--dir); }
+  .work .chip-pt { color: var(--work); }
+  .expr .chip-pt { color: var(--expr); }
+
+  .chip-en {
+    font-size: 10px;
+    color: var(--mid);
+  }
+
+  /* ── Example Rows ── */
+  .ex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--hairline);
+    gap: 10px;
+  }
+  .ex-row:last-child { border-bottom: none; }
+  .ex-pt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .ex-en {
+    font-size: 11px;
+    color: var(--dim);
+    font-style: italic;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .card-divider {
+    height: 1px;
+    background: var(--hairline);
+    margin: 14px 0;
+  }
+
+  .tip {
+    text-align: center;
+    margin-top: 32px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--card);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+  .tip strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Practice Tips ── */
+  .practice-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .practice-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--airport), var(--dir), var(--work), var(--expr));
+  }
+  .practice-body { padding: 22px 24px 20px; }
+  .practice-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .practice-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .practice-item:last-child { border-bottom: none; }
+  .practice-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--airport);
+    background: var(--airport-soft);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .practice-info { flex: 1; }
+  .practice-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .practice-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* ── Written Exercises ── */
+  .written-card {
+    background: var(--card);
+    border-radius: 16px;
+    margin-top: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px var(--hairline);
+  }
+  .written-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--airport), var(--dir), var(--work), var(--expr));
+  }
+  .written-body { padding: 22px 24px 20px; }
+  .written-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .written-subtitle {
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 20px;
+  }
+  .concept-group {
+    margin-bottom: 20px;
+  }
+  .concept-group:last-child { margin-bottom: 0; }
+  .exercise-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .exercise-item:last-child { border-bottom: none; }
+  .exercise-prompt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .exercise-prompt strong { font-weight: 700; }
+  .answer-toggle {
+    font-size: 12px;
+    color: var(--mid);
+    cursor: pointer;
+    line-height: 1.5;
+  }
+  .answer-toggle summary {
+    font-weight: 600;
+    color: var(--airport);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    list-style: none;
+    user-select: none;
+  }
+  .answer-toggle summary::-webkit-details-marker { display: none; }
+  .answer-toggle summary::before { content: '+ Show answer'; }
+  .answer-toggle[open] summary::before { content: '− Hide answer'; }
+  .answer-text {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 6px 10px;
+    background: var(--hairline);
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back-link" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+      <path d="M10 3l-5 5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    All Lessons
+  </a>
+
+  <div class="header">
+    <div class="eyebrow">Português Brasileiro</div>
+    <h1>No Aeroporto</h1>
+    <div class="tagline">Airport vocabulary, directions, work phrases &amp; everyday expressions</div>
+  </div>
+
+  <!-- ════ AIRPORT VOCABULARY ════ -->
+  <div class="card airport">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Aeroporto</div>
+      <div class="card-title">Vocabulário de Aeroporto</div>
+      <div class="card-eng">Airport — getting through the terminal</div>
+
+      <div class="section-label">Key Vocabulary</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">o voo</span><span class="chip-en">flight</span></div>
+        <div class="chip"><span class="chip-pt">o portão</span><span class="chip-en">gate</span></div>
+        <div class="chip"><span class="chip-pt">o embarque</span><span class="chip-en">boarding / departure</span></div>
+        <div class="chip"><span class="chip-pt">o comprovante</span><span class="chip-en">boarding pass</span></div>
+        <div class="chip"><span class="chip-pt">a bagagem de mão</span><span class="chip-en">carry-on</span></div>
+        <div class="chip"><span class="chip-pt">despachar</span><span class="chip-en">check luggage</span></div>
+        <div class="chip"><span class="chip-pt">a alfândega</span><span class="chip-en">customs / security</span></div>
+        <div class="chip"><span class="chip-pt">aterrissar</span><span class="chip-en">to land</span></div>
+        <div class="chip"><span class="chip-pt">a escada</span><span class="chip-en">stairs / ladder</span></div>
+        <div class="chip"><span class="chip-pt">a escada rolante</span><span class="chip-en">escalator</span></div>
+      </div>
+
+      <div class="section-label">Example Sentences</div>
+      <div class="ex-row"><span class="ex-pt">Perdi o voo porque me atrasei.</span><span class="ex-en">I missed the flight because I was late.</span></div>
+      <div class="ex-row"><span class="ex-pt">Preciso despachar minha mala.</span><span class="ex-en">I need to check my suitcase.</span></div>
+      <div class="ex-row"><span class="ex-pt">O embarque é no portão 12.</span><span class="ex-en">Boarding is at gate 12.</span></div>
+      <div class="ex-row"><span class="ex-pt">O avião vai aterrissar em 20 minutos.</span><span class="ex-en">The plane will land in 20 minutes.</span></div>
+      <div class="ex-row"><span class="ex-pt">Cadê o meu comprovante de embarque?</span><span class="ex-en">Where's my boarding pass?</span></div>
+    </div>
+  </div>
+
+  <!-- ════ DIRECTIONS & REQUESTS ════ -->
+  <div class="card dir">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Direções</div>
+      <div class="card-title">Direções e Pedidos</div>
+      <div class="card-eng">Directions &amp; requests — finding your way</div>
+
+      <div class="section-label">Useful Commands</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">Siga-me</span><span class="chip-en">Follow me</span></div>
+        <div class="chip"><span class="chip-pt">Mostre-me</span><span class="chip-en">Show me</span></div>
+        <div class="chip"><span class="chip-pt">Vire à direita</span><span class="chip-en">Turn right</span></div>
+        <div class="chip"><span class="chip-pt">Vire à esquerda</span><span class="chip-en">Turn left</span></div>
+        <div class="chip"><span class="chip-pt">Siga em frente</span><span class="chip-en">Go straight</span></div>
+        <div class="chip"><span class="chip-pt">Fica no final</span><span class="chip-en">It's at the end</span></div>
+        <div class="chip"><span class="chip-pt">Fica no segundo andar</span><span class="chip-en">It's on the 2nd floor</span></div>
+        <div class="chip"><span class="chip-pt">Pegue a escada rolante</span><span class="chip-en">Take the escalator</span></div>
+      </div>
+
+      <div class="section-label">Example Sentences</div>
+      <div class="ex-row"><span class="ex-pt">Mostre-me onde fica o portão 8.</span><span class="ex-en">Show me where gate 8 is.</span></div>
+      <div class="ex-row"><span class="ex-pt">Siga-me, eu te levo até lá.</span><span class="ex-en">Follow me, I'll take you there.</span></div>
+      <div class="ex-row"><span class="ex-pt">Vire à direita depois da alfândega.</span><span class="ex-en">Turn right after customs.</span></div>
+      <div class="ex-row"><span class="ex-pt">Siga em frente e pegue a escada rolante.</span><span class="ex-en">Go straight and take the escalator.</span></div>
+      <div class="ex-row"><span class="ex-pt">Onde fica a casa de câmbio?</span><span class="ex-en">Where is the money exchange?</span></div>
+    </div>
+  </div>
+
+  <!-- ════ WORK VOCABULARY ════ -->
+  <div class="card work">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Trabalho</div>
+      <div class="card-title">No Trabalho</div>
+      <div class="card-eng">At work — remote, commutes &amp; office life</div>
+
+      <div class="section-label">Key Vocabulary</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">remoto</span><span class="chip-en">remote</span></div>
+        <div class="chip"><span class="chip-pt">trabalhar de casa</span><span class="chip-en">work from home</span></div>
+        <div class="chip"><span class="chip-pt">os prazos</span><span class="chip-en">deadlines</span></div>
+        <div class="chip"><span class="chip-pt">a entrevista</span><span class="chip-en">interview</span></div>
+        <div class="chip"><span class="chip-pt">o conteúdo</span><span class="chip-en">content</span></div>
+        <div class="chip"><span class="chip-pt">ir até o trabalho</span><span class="chip-en">commute to work</span></div>
+        <div class="chip"><span class="chip-pt">a oficina</span><span class="chip-en">auto shop / workshop</span></div>
+      </div>
+
+      <div class="section-label">Example Sentences</div>
+      <div class="ex-row"><span class="ex-pt">Eu trabalho remoto, trabalho de casa.</span><span class="ex-en">I work remotely, I work from home.</span></div>
+      <div class="ex-row"><span class="ex-pt">Os prazos são apertados esta semana.</span><span class="ex-en">The deadlines are tight this week.</span></div>
+      <div class="ex-row"><span class="ex-pt">Tenho uma entrevista amanhã.</span><span class="ex-en">I have an interview tomorrow.</span></div>
+      <div class="ex-row"><span class="ex-pt">Demoro uma hora de ir até o trabalho.</span><span class="ex-en">It takes me an hour to commute to work.</span></div>
+      <div class="ex-row"><span class="ex-pt">Levei o carro na oficina.</span><span class="ex-en">I took the car to the auto shop.</span></div>
+    </div>
+  </div>
+
+  <!-- ════ EVERYDAY EXPRESSIONS ════ -->
+  <div class="card expr">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="cat-tag">Expressões</div>
+      <div class="card-title">Expressões do Dia a Dia</div>
+      <div class="card-eng">Everyday expressions — handy phrases for daily life</div>
+
+      <div class="section-label">Key Phrases</div>
+      <div class="chip-grid">
+        <div class="chip"><span class="chip-pt">já</span><span class="chip-en">already / right away</span></div>
+        <div class="chip"><span class="chip-pt">pois não</span><span class="chip-en">sure / of course</span></div>
+        <div class="chip"><span class="chip-pt">trocar</span><span class="chip-en">to swap / exchange</span></div>
+        <div class="chip"><span class="chip-pt">só isso</span><span class="chip-en">just this / that's all</span></div>
+        <div class="chip"><span class="chip-pt">por causa</span><span class="chip-en">because (of)</span></div>
+        <div class="chip"><span class="chip-pt">o caixa</span><span class="chip-en">cashier / register</span></div>
+        <div class="chip"><span class="chip-pt">a casa de câmbio</span><span class="chip-en">money exchange</span></div>
+      </div>
+
+      <div class="card-divider"></div>
+
+      <div class="section-label">Expressions in Context</div>
+      <div class="ex-row"><span class="ex-pt">Tem alguma coisa errada.</span><span class="ex-en">There's something wrong.</span></div>
+      <div class="ex-row"><span class="ex-pt">Mas é a minha cara.</span><span class="ex-en">It's totally my thing / It's so me.</span></div>
+      <div class="ex-row"><span class="ex-pt">Já estou indo!</span><span class="ex-en">I'm on my way!</span></div>
+      <div class="ex-row"><span class="ex-pt">Pois não, pode falar.</span><span class="ex-en">Sure, go ahead.</span></div>
+      <div class="ex-row"><span class="ex-pt">Preciso trocar dinheiro na casa de câmbio.</span><span class="ex-en">I need to exchange money at the exchange.</span></div>
+      <div class="ex-row"><span class="ex-pt">Só isso, obrigado.</span><span class="ex-en">That's all, thanks.</span></div>
+      <div class="ex-row"><span class="ex-pt">Cheguei atrasado por causa do trânsito.</span><span class="ex-en">I arrived late because of traffic.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    🇧🇷 Many of these phrases pull double duty — <strong>escada rolante</strong> works at the airport and in a shopping centre, <strong>casa de câmbio</strong> works anywhere you travel. The more contexts you practise them in, the faster they stick.
+  </div>
+
+  <!-- ════ PRACTICE TIPS ════ -->
+  <div class="practice-card">
+    <div class="practice-accent"></div>
+    <div class="practice-body">
+      <div class="practice-title">Dicas de Prática</div>
+      <div class="section-label">Ways to practise with a speaker</div>
+
+      <div class="practice-item">
+        <div class="practice-num">1</div>
+        <div class="practice-info">
+          <div class="practice-name">Airport Walkthrough</div>
+          <div class="practice-desc">Narrate the entire airport journey out loud: check in, despachar a mala, pass through alfândega, find the portão, board. Use as many words from this page as possible.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">2</div>
+        <div class="practice-info">
+          <div class="practice-name">Lost Traveller</div>
+          <div class="practice-desc">One person plays a confused traveller asking for directions in the airport. The other gives directions using Siga-me, vire à direita, siga em frente, etc.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">3</div>
+        <div class="practice-info">
+          <div class="practice-name">Monday at Work</div>
+          <div class="practice-desc">Describe your work week using the work vocabulary: Do you work remoto? What are your prazos? How long is your commute? Have a conversation about it.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">4</div>
+        <div class="practice-info">
+          <div class="practice-name">Expression Quick-Fire</div>
+          <div class="practice-desc">Your partner describes a situation in English — you respond with the right expression. "You're at the register and done shopping" → "Só isso, obrigado." Speed builds fluency.</div>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">5</div>
+        <div class="practice-info">
+          <div class="practice-name">Disaster Story</div>
+          <div class="practice-desc">Tell the story of a terrible travel day: you were late, missed the flight, got lost, needed directions. Use as many phrases from every section as you can.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ WRITTEN EXERCISES ════ -->
+  <div class="written-card">
+    <div class="written-accent"></div>
+    <div class="written-body">
+      <div class="written-title">Exercícios Escritos</div>
+      <div class="written-subtitle">Write your answers, then check below</div>
+
+      <!-- ── Aeroporto ── -->
+      <div class="concept-group">
+        <div class="section-label">Vocabulário de Aeroporto</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Match the Portuguese to English:<br>a) o voo → ___<br>b) o portão → ___<br>c) despachar → ___<br>d) a alfândega → ___<br>e) aterrissar → ___<br><em>Choices: customs, to land, flight, gate, check luggage</em></div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) o voo → <strong>flight</strong><br>b) o portão → <strong>gate</strong><br>c) despachar → <strong>check luggage</strong><br>d) a alfândega → <strong>customs</strong><br>e) aterrissar → <strong>to land</strong></div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "Boarding is at gate 5."<br>b) "I need to check my suitcase."<br>c) "Where's my boarding pass?"</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) O embarque é no portão 5.<br>b) Preciso despachar minha mala.<br>c) Cadê o meu comprovante de embarque?</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Fill in the blanks:<br>a) Perdi o ___ porque me atrasei. (flight)<br>b) O avião vai ___ em 20 minutos. (land)<br>c) A ___ de mão vai comigo no avião. (carry-on)</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Perdi o <strong>voo</strong> porque me atrasei.<br>b) O avião vai <strong>aterrissar</strong> em 20 minutos.<br>c) A <strong>bagagem</strong> de mão vai comigo no avião.</div></details>
+        </div>
+      </div>
+
+      <!-- ── Direções ── -->
+      <div class="concept-group">
+        <div class="section-label">Direções e Pedidos</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Translate to Portuguese:<br>a) "Follow me."<br>b) "Turn right after customs."<br>c) "Go straight and take the escalator."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Siga-me.<br>b) Vire à direita depois da alfândega.<br>c) Siga em frente e pegue a escada rolante.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Choose the right word — <strong>escada</strong> or <strong>escada rolante</strong>:<br>a) Pegue a ___ até o segundo andar. (it moves automatically)<br>b) A ___ fica no final do corredor. (regular stairs)<br>c) A ___ está quebrada, vamos pela ___. (escalator broken, use stairs)</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Pegue a <strong>escada rolante</strong> até o segundo andar.<br>b) A <strong>escada</strong> fica no final do corredor.<br>c) A <strong>escada rolante</strong> está quebrada, vamos pela <strong>escada</strong>.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Write directions from the entrance of an airport to the boarding gate. Use at least 3 direction phrases (siga em frente, vire à direita/esquerda, pegue a escada rolante, fica no...).</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>Siga em frente e vire à direita depois da alfândega. Pegue a escada rolante até o segundo andar. O portão 8 fica no final do corredor à esquerda.<br><em>(Your answer will vary!)</em></div></details>
+        </div>
+      </div>
+
+      <!-- ── Trabalho ── -->
+      <div class="concept-group">
+        <div class="section-label">No Trabalho</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Translate to Portuguese:<br>a) "I work from home."<br>b) "The deadlines are tight this week."<br>c) "I have an interview tomorrow."</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Eu trabalho de casa.<br>b) Os prazos são apertados esta semana.<br>c) Tenho uma entrevista amanhã.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Fill in the blanks:<br>a) Eu trabalho ___, não vou ao escritório. (remotely)<br>b) Os ___ do projeto são para sexta-feira. (deadlines)<br>c) Demoro 40 minutos de ir até o ___. (work/workplace)</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Eu trabalho <strong>remoto</strong>, não vou ao escritório.<br>b) Os <strong>prazos</strong> do projeto são para sexta-feira.<br>c) Demoro 40 minutos de ir até o <strong>trabalho</strong>.</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Write 3 sentences describing your work situation. Include whether you work remote or commute, your deadlines, and one thing about your day.</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">Example:<br>Eu trabalho remoto, trabalho de casa.<br>Os prazos esta semana são tranquilos.<br>Levei o carro na oficina hoje de manhã.<br><em>(Your answers will vary!)</em></div></details>
+        </div>
+      </div>
+
+      <!-- ── Expressões ── -->
+      <div class="concept-group">
+        <div class="section-label">Expressões do Dia a Dia</div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>1.</strong> Match the expression to the situation:<br>a) You're done ordering at a café → ___<br>b) Someone asks if they can talk to you → ___<br>c) You were late because of traffic → ___<br><em>Choices: "Pois não, pode falar." / "Só isso, obrigado." / "Cheguei atrasado por causa do trânsito."</em></div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) <strong>Só isso, obrigado.</strong><br>b) <strong>Pois não, pode falar.</strong><br>c) <strong>Cheguei atrasado por causa do trânsito.</strong></div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>2.</strong> Translate to Portuguese:<br>a) "I need to exchange money at the money exchange."<br>b) "There's something wrong."<br>c) "It's totally my thing." (use: é a minha cara)</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) Preciso trocar dinheiro na casa de câmbio.<br>b) Tem alguma coisa errada.<br>c) Mas é a minha cara!</div></details>
+        </div>
+
+        <div class="exercise-item">
+          <div class="exercise-prompt"><strong>3.</strong> Complete with <strong>já</strong>, <strong>por causa</strong>, or <strong>trocar</strong>:<br>a) ___ estou indo! (I'm on my way!)<br>b) Faltei ___ da chuva. (I missed it because of the rain.)<br>c) Preciso ___ dólares por reais. (I need to exchange dollars for reais.)</div>
+          <details class="answer-toggle"><summary></summary><div class="answer-text">a) <strong>Já</strong> estou indo!<br>b) Faltei <strong>por causa</strong> da chuva.<br>c) Preciso <strong>trocar</strong> dólares por reais.</div></details>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
